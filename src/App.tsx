@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+    <div className="container">
+      <header>
+        <h1>Welcome to My Portfolio</h1>
+        <p>Hi, I'm Qing Rong, a developer passionate about AI, Computer Vision, and Web Development.</p>
+      </header>
+      
+      <section className="about">
+        <img src="/profile.jpg" alt="Profile" className="profile-img" />
         <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+          I specialize in AI-driven solutions, full-stack development, and research in prompt engineering. 
+          Check out my projects below!
         </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      </section>
+
+      <section className="projects">
+        <h2>Projects</h2>
+        <div className="project-card">
+          <h3>EMotion</h3>
+          <p>A dual-modality stress detection system using thermal and visual facial emotion recognition.</p>
+        </div>
+        <div className="project-card">
+          <h3>AI Research at NTU</h3>
+          <p>Exploring text-to-3D model generation and AI prompt engineering techniques.</p>
+        </div>
+      </section>
+
+      <footer>
+        <p>Connect with me on <a href="https://www.linkedin.com">LinkedIn</a></p>
+      </footer>
+    </div>
+  );
 }
 
-export default App
+export default App;
