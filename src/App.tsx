@@ -124,17 +124,16 @@ useEffect(() => {
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
-  const mouse = { x: 0, y: 0 };
-  // const dots: { x: number; y: number; vx: number; vy: number }[] = [];
-  const dots: { x: number; y: number; vx: number; vy: number; color: 'white' | 'blue' }[] = [];
+  const mouse = { x: -1000, y: -1000 }; // initial off-screen
+  let isInsideHero = false;
 
+  const dots: { x: number; y: number; vx: number; vy: number; color: 'white' | 'blue' }[] = [];
   const dotsPer10000Px = 1;
 
   const generateDots = () => {
     const area = canvas.width * canvas.height;
     const numDots = Math.floor((area / 10000) * dotsPer10000Px);
     dots.length = 0;
-
     for (let i = 0; i < numDots; i++) {
       dots.push({
         x: Math.random() * canvas.width,
@@ -154,12 +153,22 @@ useEffect(() => {
 
   resizeCanvas();
 
-  const handleMouseMove = (e: MouseEvent) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
+  const hero = document.getElementById('hero');
+  if (!hero) return;
+
+  const updateMousePosition = (e: PointerEvent) => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+    isInsideHero = true;
   };
 
-  window.addEventListener('mousemove', handleMouseMove);
+  const handleMouseLeave = () => {
+    isInsideHero = false;
+  };
+
+  hero.addEventListener('pointermove', updateMousePosition);
+  hero.addEventListener('pointerleave', handleMouseLeave);
   window.addEventListener('resize', resizeCanvas);
 
   let animationId: number;
@@ -168,8 +177,8 @@ useEffect(() => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     const NodesConnected: typeof dots = [];
-    const maxMouseDist = 500;
-    const maxDotDist = 250;
+    const maxMouseDist = 400;
+    const maxDotDist = 200;
 
     dots.forEach((dot) => {
       dot.x += dot.vx;
@@ -178,42 +187,35 @@ useEffect(() => {
       if (dot.x < 0 || dot.x > canvas.width) dot.vx *= -1;
       if (dot.y < 0 || dot.y > canvas.height) dot.vy *= -1;
 
-      // Draw dot
       ctx.beginPath();
       ctx.arc(dot.x, dot.y, 2, 0, Math.PI * 2);
       ctx.fillStyle = dot.color === 'white' ? 'rgba(255, 255, 255, 0.6)' : 'rgba(81, 162, 233, 0.6)';
       ctx.fill();
 
-      const dx = mouse.x - dot.x;
-      const dy = mouse.y - dot.y;
-      const distToMouse = Math.sqrt(dx * dx + dy * dy);
+      if (isInsideHero) {
+        const dx = mouse.x - dot.x;
+        const dy = mouse.y - dot.y;
+        const distToMouse = Math.sqrt(dx * dx + dy * dy);
 
-      if (distToMouse < maxMouseDist) {
-        const t = 1 - distToMouse / maxMouseDist;
+        if (distToMouse < maxMouseDist) {
+          const t = 1 - distToMouse / maxMouseDist;
 
-        // Line from mouse to dot
-        ctx.beginPath();
-        ctx.moveTo(mouse.x, mouse.y);
-        ctx.lineTo(dot.x, dot.y);
-        ctx.strokeStyle = `rgba(81, 162, 233, ${0.8 * t})`;
-        ctx.lineWidth = 2 * t + 0.5;
-        ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(mouse.x, mouse.y);
+          ctx.lineTo(dot.x, dot.y);
+          ctx.strokeStyle = `rgba(81, 162, 233, ${0.8 * t})`;
+          ctx.lineWidth = 2 * t + 0.5;
+          ctx.stroke();
 
-        // subtle attraction
-        // dot.vx += dx * 0.0002 * t;
-        // dot.vy += dy * 0.0002 * t;
-
-        // Save for secondary connections
-        NodesConnected.push(dot);
+          NodesConnected.push(dot);
+        }
       }
     });
 
-    // Draw connections *between* NodesConnected
     for (let i = 0; i < NodesConnected.length; i++) {
       const a = NodesConnected[i];
       for (let j = i + 1; j < NodesConnected.length; j++) {
         const b = NodesConnected[j];
-
         const dx = b.x - a.x;
         const dy = b.y - a.y;
         const distBetween = Math.sqrt(dx * dx + dy * dy);
@@ -240,11 +242,46 @@ useEffect(() => {
   animate();
 
   return () => {
-    window.removeEventListener('mousemove', handleMouseMove);
+    hero.removeEventListener('pointermove', updateMousePosition);
+    hero.removeEventListener('pointerleave', handleMouseLeave);
     window.removeEventListener('resize', resizeCanvas);
     cancelAnimationFrame(animationId);
   };
 }, []);
+
+
+  // Alternating roles
+const roles = ["Machine Learning Engineer", "Software Engineer", "Gamer"];
+const [roleIndex, setRoleIndex] = useState(0);
+const [displayText, setDisplayText] = useState("");
+const [isDeleting, setIsDeleting] = useState(false);
+
+useEffect(() => {
+  const currentRole = roles[roleIndex];
+  const typingSpeed = isDeleting ? 50 : 100; // faster when deleting
+  const pauseTime = 1000;
+
+  let timeoutId: NodeJS.Timeout;
+
+  if (!isDeleting && displayText === currentRole) {
+    // Pause at full word
+    timeoutId = setTimeout(() => setIsDeleting(true), pauseTime);
+  } else if (isDeleting && displayText === "") {
+    // Move to next word after erasing
+    setIsDeleting(false);
+    setRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
+  } else {
+    // Typing or deleting
+    const updatedText = isDeleting
+      ? currentRole.slice(0, displayText.length - 1)
+      : currentRole.slice(0, displayText.length + 1);
+
+    timeoutId = setTimeout(() => setDisplayText(updatedText), typingSpeed);
+  }
+
+  return () => clearTimeout(timeoutId);
+}, [displayText, isDeleting, roleIndex]);
+
 
 
 
@@ -318,12 +355,44 @@ useEffect(() => {
   );
 
   const carouselRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const handleScroll = (direction: number) => {
+  // Number of carousel items — update if you add/remove items
+  const itemsCount = 3;
+
+  // Scroll to specific slide
+  const scrollToIndex = (index: number) => {
     if (!carouselRef.current) return;
-    const scrollAmount = carouselRef.current.offsetWidth;
-    carouselRef.current.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    const carousel = carouselRef.current;
+    const itemWidth = carousel.offsetWidth;
+    carousel.scrollTo({ left: itemWidth * index, behavior: 'smooth' });
   };
+
+  // Update active pill on scroll
+  const onScroll = () => {
+    if (!carouselRef.current) return;
+    const scrollLeft = carouselRef.current.scrollLeft;
+    const itemWidth = carouselRef.current.offsetWidth;
+    const newIndex = Math.round(scrollLeft / itemWidth);
+    if (newIndex !== activeIndex) setActiveIndex(newIndex);
+  };
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+    carousel.addEventListener('scroll', onScroll, { passive: true });
+    return () => carousel.removeEventListener('scroll', onScroll);
+  }, [activeIndex]);
+
+const handleWorkArrowScroll = (dir: number) => {
+  if (!carouselRef.current) return;
+  const carousel = carouselRef.current;
+  const itemWidth = carousel.offsetWidth;
+  let newIndex = activeIndex + dir;
+  if (newIndex < 0) newIndex = 0;
+  if (newIndex >= itemsCount) newIndex = itemsCount - 1;
+  scrollToIndex(newIndex);
+};
 
   return (
     <div className="App">
@@ -334,7 +403,9 @@ useEffect(() => {
         </div>
         <div className="heading">
           <div className="heading__line-1">Hello, I'm <span>Qing Rong</span>.</div>
-          <div className="heading__line-2">I'm a full stack web developer.</div>
+          <div className="heading__line-2">
+            I am a <span className="typing-text">{displayText}</span>_
+          </div>
           <a href="#about" className="heading__link">
             <div className="heading-cta">
               View my work <ArrowIcon />
@@ -444,8 +515,12 @@ useEffect(() => {
       {/* Work Section */}
       <section className="work" id="work">
         <h2 className="work__heading section-heading">Work</h2>
+
+        <div className="work__carousel-wrapper">
+          
         <div className="work__carousel">
-          <button className="carousel__arrow carousel__arrow--left" onClick={() => handleScroll(-1)}>&lt;</button>
+          
+          <button className="carousel__arrow carousel__arrow--left" onClick={() => handleWorkArrowScroll(-1)}>⟨</button>
           <div className="carousel__track" ref={carouselRef} style={{ display: 'flex', overflowX: 'auto', scrollSnapType: 'x mandatory', scrollBehavior: 'smooth' }}>
 
             <div className="work__item" style={{ flex: '0 0 100%', scrollSnapAlign: 'start' }}>
@@ -565,8 +640,26 @@ useEffect(() => {
             </div>
 
           </div>
-          <button className="carousel__arrow carousel__arrow--right" onClick={() => handleScroll(1)}>&gt;</button>
+          <button className="carousel__arrow carousel__arrow--right" onClick={() => handleWorkArrowScroll(1)}>⟩</button>
         </div>
+        
+        </div>
+
+      {/* Pills navigation */}
+      <div className="carousel__pills" role="tablist" aria-label="Work carousel pagination">
+        {[...Array(itemsCount)].map((_, i) => (
+          <button
+            key={i}
+            className={`carousel__pill ${i === activeIndex ? 'active' : ''}`}
+            onClick={() => scrollToIndex(i)}
+            aria-label={`Go to slide ${i + 1}`}
+            role="tab"
+            aria-selected={i === activeIndex}
+            tabIndex={i === activeIndex ? 0 : -1}
+          />
+        ))}
+      </div>
+
       </section>
 
       {/* Projects Section */}
@@ -682,10 +775,10 @@ useEffect(() => {
           </div>
         </a>
         <div className="socials">
-          <a href="https://github.com/bscottnz" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/CobaltConcrete" target="_blank" rel="noopener noreferrer">
             <div className="socials__github">GitHub</div>
           </a>
-          <a href="mailto:blscott@gmail.com" target="_blank" rel="noopener noreferrer">
+          <a href="mailto:ganqingrong55@gmail.com" target="_blank" rel="noopener noreferrer">
             <div className="socials__email">Email</div>
           </a>
         </div>
