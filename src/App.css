@@ -191,11 +191,6 @@ section {
   align-items: start;
 }
 
-.profile {
-  opacity: 0;
-  animation: fadeIn 1s ease-in-out forwards;
-  animation-delay: 0.5s;
-}
 
 @keyframes fadeIn {
   to {
@@ -203,17 +198,30 @@ section {
   }
 }
 
+.profile {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap; /* Optional: allows wrapping on smaller screens */
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+  animation-delay: 0.5s;
+}
+
 .profile__picture {
   width: 200px;
   height: 200px;
-  margin: 0 auto 2rem;
+  flex-shrink: 0;
+  margin: 0; /* remove vertical centering */
 }
 
 .profile__blurb {
   font-size: 1.1rem;
   line-height: 1.8;
   opacity: 0.9;
+  flex: 1; /* take remaining space */
 }
+
 
 .skills {
   display: flex;
@@ -274,6 +282,7 @@ section {
 
 /* Projects Section */
 .projects {
+  border-radius: 20px;
   background: rgba(255, 255, 255, 0.02);
 }
 
@@ -309,18 +318,54 @@ section {
   aspect-ratio: 16/10;
   border-radius: 15px;
   overflow: hidden;
-  background: linear-gradient(135deg, #51a2e9, #a878a2);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .project__image-placeholder {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: white;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+  overflow-y: hidden;       /* ✅ Disable vertical scroll */
+  scroll-snap-type: x mandatory;
+  border-radius: 12px;
+  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  /* ✅ Hide scrollbars across browsers */
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE 10+ */
 }
+
+.project__image-placeholder::-webkit-scrollbar {
+  display: none;                  /* Chrome, Safari */
+}
+
+.project-carousel {
+  display: flex;
+  gap: 1rem;
+  scroll-snap-type: x mandatory;
+  overflow-y: hidden;             /* ✅ Prevent vertical scroll in carousel */
+}
+
+.project-carousel__item {
+  flex: 0 0 100%;
+  max-width: 100%;
+  max-height: 360px;
+  height: 360px;
+  width: 100%;
+  background-color: transparent;
+  object-fit: contain;        /* Show full image/video inside box without cropping */
+  object-position: center;;
+  scroll-snap-align: center;
+  border-radius: 12px;
+  background: transparent;
+  margin: auto 0;             /* NEW: fallback vertical centering */
+}
+
+
 
 .project__info {
   padding: 1rem;

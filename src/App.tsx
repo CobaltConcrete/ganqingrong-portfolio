@@ -10,6 +10,12 @@ import ttsIcon from './assets/icons/tts.webp';
 import prusaIcon from './assets/icons/prusa.svg';
 import stablediffusionIcon from './assets/icons/stablediffusion.png'; 
 import databaseIcon from './assets/icons/database.svg';
+import Pantheon0 from './assets/Projects/Pantheon0.png';
+import Pantheon1 from './assets/Projects/Pantheon1.png';
+import Pantheon2 from './assets/Projects/Pantheon2.png';
+import Pantheon3 from './assets/Projects/Pantheon3.png';
+import PantheonVideo from './assets/Projects/PantheonVideo.mp4';
+
 
 const App: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -397,6 +403,38 @@ const handleWorkArrowScroll = (dir: number) => {
   scrollToIndex(newIndex);
 };
 
+const projectItemVideoRef = useRef<HTMLVideoElement>(null);
+const projectItemCarouselRef = useRef<HTMLDivElement>(null);
+
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      const video = projectItemVideoRef.current;
+      if (!video) return;
+
+      if (entry.isIntersecting) {
+        video.play().catch((e) => console.error('Video play failed:', e));
+      } else {
+        video.pause();
+      }
+    },
+    { threshold: 0.5 }
+  );
+
+  if (projectItemVideoRef.current) {
+    observer.observe(projectItemVideoRef.current);
+  }
+
+  return () => {
+    if (projectItemVideoRef.current) {
+      observer.unobserve(projectItemVideoRef.current);
+    }
+  };
+}, []);
+
+
+
+
   return (
     <div className="App">
       {/* Hero Section */}
@@ -445,74 +483,78 @@ const handleWorkArrowScroll = (dir: number) => {
         </div>
       </div>
 
-      {/* About Section */}
-      <section className="about" id="about">
-        <h2 className="about__heading section-heading">About</h2>
-        <div className="about__content">
-          <div className="profile profile__fade-in">
-            <div className="profile__picture">
-              <ProfileIcon />
-            </div>
-            <p className="profile__blurb">
-              Fully committed to the philosophy of life-long learning, I'm a full stack developer with a deep passion for JavaScript, React and all things web development. The unique combination of creativity, logic, technology and never running out of new things to discover, drives my excitement and passion for web development. When I'm not at my computer I like to spend my time reading, keeping fit and playing guitar.
-            </p>
-          </div>
+{/* About Section */}
+<section className="about" id="about">
+  <h2 className="about__heading section-heading">About</h2>
 
-          <div className="skills">
-            <div className="skills__row">
-              <div className="skills__item skills__item-fade-in">
-                <div className="skills__item-icon">
-                  <img src={openaiIcon} alt="OpenAI" />
-                </div>
-                <div className="skills__item-name">LLMs</div>
-              </div>
-              <div className="skills__item skills__item-fade-in">
-                <div className="skills__item-icon">
-                  <img src={yoloIcon} alt="YOLO" />
-                </div>
-                <div className="skills__item-name">CV</div>
-              </div>
-            </div>
+  {/* Picture + Description */}
+  <div className="about__intro">
+    <div className="profile profile__fade-in">
+      <div className="profile__picture">
+        <ProfileIcon />
+      </div>
+      <p className="profile__blurb">
+        Hi there! I'm a software engineer and AI researcher passionate about building intelligent systems that make an impact. My work bridges AI, full-stack development, and game mechanics—often blending creativity with deep technical rigor. Whether it's experimenting with large language models, designing backend systems, or prototyping game logic, I love solving real-world problems through code. Outside of projects, I enjoy exploring research papers, developing side games, and staying curious about how emerging technologies can shape the future.
+      </p>
+    </div>
 
-            <div className="skills__row">
-              <div className="skills__item skills__item-fade-in">
-                <div className="skills__item-icon">
-                  <img src={reactIcon} alt="React" />
-                </div>
-                <div className="skills__item-name">React</div>
-              </div>
-              <div className="skills__item skills__item-fade-in">
-                <div className="skills__item-icon">
-                  <img src={pythonIcon} alt="Python" />
-                </div>
-                <div className="skills__item-name">Python</div>
-              </div>
-              <div className="skills__item skills__item-fade-in">
-                <div className="skills__item-icon">
-                  <img src={postgresIcon} alt="PostgreSQL" />
-                </div>
-                <div className="skills__item-name">SQL</div>
-              </div>
-            </div>
+  </div>
 
-            <div className="skills__row">
-              <div className="skills__item skills__item-fade-in">
-                <div className="skills__item-icon">
-                  <img src={stablediffusionIcon} alt="Stable Diffusion" />
-                </div>
-                <div className="skills__item-name">Diffusion</div>
-              </div>
-              <div className="skills__item skills__item-fade-in">
-                <div className="skills__item-icon">
-                  <img src={prusaIcon} alt="3D Printing" />
-                </div>
-                <div className="skills__item-name">3D-Printing</div>
-              </div>
-            </div>
-          </div>
-
+  {/* Skills */}
+  <div className="skills">
+    <div className="skills__row">
+      <div className="skills__item skills__item-fade-in">
+        <div className="skills__item-icon">
+          <img src={openaiIcon} alt="OpenAI" />
         </div>
-      </section>
+        <div className="skills__item-name">LLMs</div>
+      </div>
+      <div className="skills__item skills__item-fade-in">
+        <div className="skills__item-icon">
+          <img src={yoloIcon} alt="YOLO" />
+        </div>
+        <div className="skills__item-name">CV</div>
+      </div>
+    </div>
+
+    <div className="skills__row">
+      <div className="skills__item skills__item-fade-in">
+        <div className="skills__item-icon">
+          <img src={reactIcon} alt="React" />
+        </div>
+        <div className="skills__item-name">React</div>
+      </div>
+      <div className="skills__item skills__item-fade-in">
+        <div className="skills__item-icon">
+          <img src={pythonIcon} alt="Python" />
+        </div>
+        <div className="skills__item-name">Python</div>
+      </div>
+      <div className="skills__item skills__item-fade-in">
+        <div className="skills__item-icon">
+          <img src={postgresIcon} alt="PostgreSQL" />
+        </div>
+        <div className="skills__item-name">SQL</div>
+      </div>
+    </div>
+
+    <div className="skills__row">
+      <div className="skills__item skills__item-fade-in">
+        <div className="skills__item-icon">
+          <img src={stablediffusionIcon} alt="Stable Diffusion" />
+        </div>
+        <div className="skills__item-name">Diffusion</div>
+      </div>
+      <div className="skills__item skills__item-fade-in">
+        <div className="skills__item-icon">
+          <img src={prusaIcon} alt="3D Printing" />
+        </div>
+        <div className="skills__item-name">3D-Printing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
       {/* Work Section */}
@@ -735,7 +777,25 @@ const handleWorkArrowScroll = (dir: number) => {
         <div className="project project-left">
           <a href="https://thortol.itch.io/pantheon" target="_blank" rel="noopener noreferrer">
             <div className="project__image-container">
-              <div className="project__image-placeholder">Pantheon</div>
+
+<div className="project__image-placeholder">
+  <div className="project-carousel" ref={projectItemCarouselRef}>
+    <img src={Pantheon0} alt="Pantheon Screenshot 0" className="project-carousel__item" />
+    <video
+      src={PantheonVideo}
+      className="project-carousel__item"
+      muted
+      loop
+      playsInline
+      ref={projectItemVideoRef}
+    />
+    <img src={Pantheon1} alt="Pantheon Screenshot 1" className="project-carousel__item" />
+    <img src={Pantheon2} alt="Pantheon Screenshot 2" className="project-carousel__item" />
+    <img src={Pantheon3} alt="Pantheon Screenshot 3" className="project-carousel__item" />
+  </div>
+</div>
+
+
             </div>
           </a>
           <div className="project__info">
