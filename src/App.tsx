@@ -288,27 +288,30 @@ useEffect(() => {
   // Scroll-based navigation
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'projects', 'contact'];
-      const scrollPosition = window.scrollY + 100;
+      const sections = ['hero', 'about', 'work', 'projects', 'contact'];
+      let found = false;
 
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 120 && rect.bottom >= 120) {
             setActiveNav(section);
+            found = true;
             break;
           }
         }
       }
+
+      // Optional fallback if none matched
+      if (!found) setActiveNav('');
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check on load
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -523,121 +526,140 @@ const handleWorkArrowScroll = (dir: number) => {
           <button className="carousel__arrow carousel__arrow--left" onClick={() => handleWorkArrowScroll(-1)}>⟨</button>
           <div className="carousel__track" ref={carouselRef} style={{ display: 'flex', overflowX: 'auto', scrollSnapType: 'x mandatory', scrollBehavior: 'smooth' }}>
 
-            <div className="work__item" style={{ flex: '0 0 100%', scrollSnapAlign: 'start' }}>
-              <div className="work__grid">
-                <div className="work__box">
-                  <h3 className="text-lg font-bold">DSO National Laboratories</h3>
-                  <h4 className="text-sm font-medium">AI Research Intern</h4>
-                  <p className="text-xs text-gray-400">May 2025 – Aug 2025</p>
-                  {/* logo optional */}
-                </div>
-                <div className="work__box">
-                  <div className="font-bold underline mb-1">Skills</div>
-                  <div className="flex flex-wrap gap-2 text-xs">
-                    <ul className="list-disc list-inside text-sm space-y-1">
-                    <li>LLMs</li>
-                    <li>Prompt Engineering</li>
-                    <li>System 2 Reasoning</li>
-                    <li>Fact Correction</li>
-                    <li>Python</li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="work__box">
-                  image here
-                </div>
-                <div className="work__box">
-                  <div className="font-bold underline mb-1">Accomplishments</div>
-                  <ul className="list-disc list-inside text-sm space-y-1">
-                    <li>Integrated System 2-style fine-tuning with context-parametric inversion.</li>
-                    <li>Designed reasoning augmentations: summarization, fact extraction, correction.</li>
-                    <li>Improved LLM reliability via modular cognitive pipelines.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+<div className="work__item" style={{ flex: '0 0 100%', scrollSnapAlign: 'start' }}>
+  <div className="work__grid">
+    
+    {/* Company + Role */}
+    <div className="work__box">
+      <h3 className="text-lg font-bold" style={{ color: '#60a5fa' /* blue-400 */ }}>
+        DSO National Laboratories
+      </h3>
+      <h4 className="text-sm font-medium" style={{ color: '#ffffff' }}>
+        AI Research Intern
+      </h4>
+      <p className="text-xs" style={{ color: '#9ca3af' /* gray-400 */ }}>
+        May 2025 – Aug 2025
+      </p>
+    </div>
 
-            <div className="work__item" style={{ flex: '0 0 100%', scrollSnapAlign: 'start' }}>
-              <div className="work__grid">
-                {/* A: Job Info */}
-                <div className="work__box">
-                  <h3 className="text-lg font-bold">NTU-A*STAR Research</h3>
-                  <h4 className="text-sm font-medium">3D Gen Intern</h4>
-                  <p className="text-xs text-gray-400">May 2024 – Jul 2024</p>
-                  {/* logo optional */}
-                </div>
+    {/* Skills */}
+    <div className="work__box">
+      <div className="font-bold underline mb-1" style={{ color: '#7dd3fc' /* blue-300 */ }}>
+        Skills
+      </div>
+      <ul className="list-disc list-inside text-sm space-y-1" style={{ color: '#ffffff' }}>
+        <li>LLMs</li>
+        <li>Prompt Engineering</li>
+        <li>System 2 Reasoning</li>
+        <li>Fact Correction</li>
+        <li>Python</li>
+      </ul>
+    </div>
 
-                {/* B: Skills */}
-                <div className="work__box">
-                  <div className="font-bold underline mb-1">Skills</div>
-                  <div className="flex flex-wrap gap-2 text-xs">
-                    <ul className="list-disc list-inside text-sm space-y-1">
-                      <li>3D Diffusion Models</li>
-                      <li>Blender</li>
-                      <li>Mesh Repair</li>
-                      <li>PLA & Resin Printing</li>
-                      <li>Python</li>
-                    </ul>
-                  </div>
-                </div>
+    {/* Image Box */}
+    <div className="work__box flex items-center justify-center">
+      <div className="text-sm italic" style={{ color: '#9ca3af' /* gray-400 */ }}>
+        image here
+      </div>
+    </div>
 
-                {/* C: Image */}
-                <div className="work__box">
-                  image here
-                </div>
+    {/* Accomplishments */}
+    <div className="work__box">
+      <div className="font-bold underline mb-1" style={{ color: '#7dd3fc' /* blue-300 */ }}>
+        Accomplishments
+      </div>
+      <ul className="list-disc list-inside text-sm space-y-1" style={{ color: '#ffffff' }}>
+        <li>Integrated System 2-style fine-tuning with context-parametric inversion.</li>
+        <li>Designed reasoning augmentations: summarization, fact extraction, correction.</li>
+        <li>Improved LLM reliability via modular cognitive pipelines.</li>
+      </ul>
+    </div>
 
-                {/* D: Accomplishments */}
-                <div className="work__box">
-                  <div className="font-bold underline mb-1">Accomplishments</div>
-                  <ul className="list-disc list-inside text-sm space-y-1">
-                    <li>Benchmarked 3D generation models (SDFusion, DreamFusion, Magic3D).</li>
-                    <li>Generated and repaired 3D meshes using Blender.</li>
-                    <li>Prepared models for PLA/resin printing, showcased at IEEE 2024.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+  </div>
+</div>
 
-            <div className="work__item" style={{ flex: '0 0 100%', scrollSnapAlign: 'start' }}>
-              <div className="work__grid">
-                {/* A: Job Info */}
-                <div className="work__box">
-                  <h3 className="text-lg font-bold">DSTA</h3>
-                  <h4 className="text-sm font-medium">Software Intern, Computer Vision</h4>
-                  <p className="text-xs text-gray-400">May 2023 – Jul 2023</p>
-                  {/* logo optional */}
-                </div>
+{/* NTU-A*STAR Research */}
+<div className="work__item" style={{ flex: '0 0 100%', scrollSnapAlign: 'start' }}>
+  <div className="work__grid">
 
-                {/* B: Skills */}
-                <div className="work__box">
-                  <div className="font-bold underline mb-1">Skills</div>
-                  <div className="flex flex-wrap gap-2 text-xs">
-                    <ul className="list-disc list-inside text-sm space-y-1">
-                      <li>Computer Vision</li>
-                      <li>ArcFace</li>
-                      <li>AdaFace</li>
-                      <li>Facial Recognition</li>
-                      <li>Surveillance Systems</li>
-                    </ul>
-                  </div>
-                </div>
+    {/* A: Job Info */}
+    <div className="work__box">
+      <h3 className="text-lg font-bold" style={{ color: '#60a5fa' }}>NTU-A*STAR Research</h3>
+      <h4 className="text-sm font-medium" style={{ color: '#ffffff' }}>3D Gen Intern</h4>
+      <p className="text-xs" style={{ color: '#9ca3af' }}>May 2024 – Jul 2024</p>
+    </div>
 
-                {/* C: Image */}
-                <div className="work__box">
-                  image here
-                </div>
+    {/* B: Skills */}
+    <div className="work__box">
+      <div className="font-bold underline mb-1" style={{ color: '#7dd3fc' }}>Skills</div>
+      <ul className="list-disc list-inside text-sm space-y-1" style={{ color: '#ffffff' }}>
+        <li>3D Diffusion Models</li>
+        <li>Blender</li>
+        <li>Mesh Repair</li>
+        <li>PLA & Resin Printing</li>
+        <li>Python</li>
+      </ul>
+    </div>
 
-                {/* D: Accomplishments */}
-                <div className="work__box">
-                  <div className="font-bold underline mb-1">Accomplishments</div>
-                  <ul className="list-disc list-inside text-sm space-y-1">
-                    <li>Evaluated CV-based threat detection in large-scale events (up to 1000 pax).</li>
-                    <li>Improved identification accuracy for NDP 2023 using facial recognition.</li>
-                    <li>Benchmarked ArcFace and AdaFace models for real-time deployment.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+    {/* C: Image */}
+    <div className="work__box">
+      <div className="text-sm italic" style={{ color: '#9ca3af' }}>image here</div>
+    </div>
+
+    {/* D: Accomplishments */}
+    <div className="work__box">
+      <div className="font-bold underline mb-1" style={{ color: '#7dd3fc' }}>Accomplishments</div>
+      <ul className="list-disc list-inside text-sm space-y-1" style={{ color: '#ffffff' }}>
+        <li>Benchmarked 3D generation models (SDFusion, DreamFusion, Magic3D).</li>
+        <li>Generated and repaired 3D meshes using Blender.</li>
+        <li>Prepared models for PLA/resin printing, showcased at IEEE 2024.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+{/* DSTA */}
+<div className="work__item" style={{ flex: '0 0 100%', scrollSnapAlign: 'start' }}>
+  <div className="work__grid">
+
+    {/* A: Job Info */}
+    <div className="work__box">
+      <h3 className="text-lg font-bold" style={{ color: '#60a5fa' }}>DSTA</h3>
+      <h4 className="text-sm font-medium" style={{ color: '#ffffff' }}>Software Intern, Computer Vision</h4>
+      <p className="text-xs" style={{ color: '#9ca3af' }}>May 2023 – Jul 2023</p>
+    </div>
+
+    {/* B: Skills */}
+    <div className="work__box">
+      <div className="font-bold underline mb-1" style={{ color: '#7dd3fc' }}>Skills</div>
+      <ul className="list-disc list-inside text-sm space-y-1" style={{ color: '#ffffff' }}>
+        <li>Computer Vision</li>
+        <li>ArcFace</li>
+        <li>AdaFace</li>
+        <li>Facial Recognition</li>
+        <li>Surveillance Systems</li>
+      </ul>
+    </div>
+
+    {/* C: Image */}
+    <div className="work__box">
+      <div className="text-sm italic" style={{ color: '#9ca3af' }}>image here</div>
+    </div>
+
+    {/* D: Accomplishments */}
+    <div className="work__box">
+      <div className="font-bold underline mb-1" style={{ color: '#7dd3fc' }}>Accomplishments</div>
+      <ul className="list-disc list-inside text-sm space-y-1" style={{ color: '#ffffff' }}>
+        <li>Evaluated CV-based threat detection in large-scale events (up to 1000 pax).</li>
+        <li>Improved identification accuracy for NDP 2023 using facial recognition.</li>
+        <li>Benchmarked ArcFace and AdaFace models for real-time deployment.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
 
           </div>
           <button className="carousel__arrow carousel__arrow--right" onClick={() => handleWorkArrowScroll(1)}>⟩</button>
@@ -669,82 +691,128 @@ const handleWorkArrowScroll = (dir: number) => {
         <div className="project project-left">
           <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank" rel="noopener noreferrer">
             <div className="project__image-container">
-              <div className="project__image-placeholder">LifeInvader Social</div>
+              <div className="project__image-placeholder">EatSee</div>
             </div>
           </a>
           <div className="project__info">
-            <h3 className="project__title">lifeinvader<br />Social Media App</h3>
+            <h3 className="project__title">EatSee</h3>
+            <h4 className="project__subtitle">Food & Social Matching Platform</h4>
             <p className="project__description">
-              Full stack social media application built with React, Node.js, Express.js, MongoDB, Socket.io and AWS S3.
+              Telegram bot that matches users with compatible food buddies based on shared cuisine preferences and social compatibility, including age and gender preferences. Built with Flask, FastAPI, and PostgreSQL.
             </p>
             <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank" rel="noopener noreferrer">
               <div className="project__live-2">Live app</div>
             </a>
             <a href="https://github.com/bscottnz/life-invader-frontend" target="_blank" rel="noopener noreferrer">
-              <div className="project__live-2">learn more</div>
+              <div className="project__live-2">Learn more</div>
             </a>
           </div>
         </div>
 
+
         <div className="project project-right">
-          <div className="project__info">
-            <h3 className="project__title">Chakra Chat<br />Messaging App</h3>
-            <p className="project__description">
-              Instant messaging application built with Next.JS, Firebase and Chakra UI.
-            </p>
-            <a href="https://nextjs-chakra-chatapp-qnhb6dq42-bscottnz.vercel.app/" target="_blank" rel="noopener noreferrer">
-              <div className="project__live-2">live app</div>
-            </a>
-            <a href="https://github.com/bscottnz/nextjs-chakra-chatapp" target="_blank" rel="noopener noreferrer">
-              <div className="project__live-2">learn more</div>
-            </a>
-          </div>
-          <a href="https://nextjs-chakra-chatapp-qnhb6dq42-bscottnz.vercel.app/" target="_blank" rel="noopener noreferrer">
+          <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank" rel="noopener noreferrer">
             <div className="project__image-container">
-              <div className="project__image-placeholder">Chat App</div>
+              <div className="project__image-placeholder">eCycle</div>
             </div>
           </a>
+          <div className="project__info">
+            <h3 className="project__title">eCycle</h3>
+            <h4 className="project__subtitle">E-Waste Disposal & Community Platform</h4>
+            <p className="project__description">
+              Web app to locate nearby e-waste disposal, recycling, and repair facilities. Includes a community forum for users to post questions, share pictures, and connect with businesses to confirm accepted items, promoting responsible e-waste management. Built with Flask, PostgreSQL, and Google Maps API.
+            </p>
+            <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank" rel="noopener noreferrer">
+              <div className="project__live-2">Live app</div>
+            </a>
+            <a href="https://github.com/bscottnz/life-invader-frontend" target="_blank" rel="noopener noreferrer">
+              <div className="project__live-2">Learn more</div>
+            </a>
+          </div>
+        </div>
+
+
+        <div className="project project-left">
+          <a href="https://thortol.itch.io/pantheon" target="_blank" rel="noopener noreferrer">
+            <div className="project__image-container">
+              <div className="project__image-placeholder">Pantheon</div>
+            </div>
+          </a>
+          <div className="project__info">
+            <h3 className="project__title">Pantheon</h3>
+            <h4 className="project__subtitle">AI-Powered Dungeon Crawler Game</h4>
+            <p className="project__description">
+              Top-down shooter dungeon crawler allowing players to spawn custom weapons, items, and buffs using large language models. Built with Unity, OpenAPI, and FastAPI.
+            </p>
+            <a href="https://thortol.itch.io/pantheon" target="_blank" rel="noopener noreferrer">
+              <div className="project__live-2">Play</div>
+            </a>
+          </div>
+        </div>
+
+
+        <div className="project project-right">
+          <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank" rel="noopener noreferrer">
+            <div className="project__image-container">
+              <div className="project__image-placeholder">TOSS</div>
+            </div>
+          </a>
+          <div className="project__info">
+            <h3 className="project__title">TOSS</h3>
+            <h4 className="project__subtitle">Tracking Oriented Semantic Segmentation</h4>
+            <p className="project__description">
+              Combines object tracking (YOLOv11) with semantic segmentation models (DeepLabv3+, MobileNetv3) to enhance video analysis accuracy. Built using MMSegmentation, OpenCV, and NumPy for advanced video analysis
+            </p>
+            <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank" rel="noopener noreferrer">
+              <div className="project__live-2">Live app</div>
+            </a>
+            <a href="https://github.com/bscottnz/life-invader-frontend" target="_blank" rel="noopener noreferrer">
+              <div className="project__live-2">Learn more</div>
+            </a>
+          </div>
         </div>
 
         <div className="project project-left">
-          <a href="https://bscottnz.github.io/esketch/" target="_blank" rel="noopener noreferrer">
+          <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank" rel="noopener noreferrer">
             <div className="project__image-container">
-              <div className="project__image-placeholder">Retro Sketch</div>
+              <div className="project__image-placeholder">Berthing Bridge</div>
             </div>
           </a>
           <div className="project__info">
-            <h3 className="project__title">Retro-Sketch<br />Pixel Sketch App</h3>
+            <h3 className="project__title">Berthing Bridge</h3>
+            <h4 className="project__subtitle">Automated Ship Berthing System</h4>
             <p className="project__description">
-              Create pixel art with a variety of drawing tools.
+              Utilizes computer vision with YOLOX alongside Arduino ultrasonic sensors to accurately detect embarkation points and measure distances, streamlining and accelerating the ship berthing process with replica model. Built with OpenCV, YOLOX, Arduino, and 3D Printing.
             </p>
-            <a href="https://bscottnz.github.io/esketch/" target="_blank" rel="noopener noreferrer">
+            <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank" rel="noopener noreferrer">
               <div className="project__live-2">Live app</div>
             </a>
-            <a href="https://github.com/bscottnz/esketch" target="_blank" rel="noopener noreferrer">
-              <div className="project__live-2">learn more</div>
+            <a href="https://github.com/bscottnz/life-invader-frontend" target="_blank" rel="noopener noreferrer">
+              <div className="project__live-2">Learn more</div>
             </a>
           </div>
         </div>
 
         <div className="project project-right">
-          <div className="project__info">
-            <h3 className="project__title">// TO-DO<br />Productivity App</h3>
-            <p className="project__description">
-              Keep track of tasks with custom project folders and notes.
-            </p>
-            <a href="https://bscottnz.github.io/todo/" target="_blank" rel="noopener noreferrer">
-              <div className="project__live-2">live app</div>
-            </a>
-            <a href="https://github.com/bscottnz/todo" target="_blank" rel="noopener noreferrer">
-              <div className="project__live-2">learn more</div>
-            </a>
-          </div>
-          <a href="https://bscottnz.github.io/todo/" target="_blank" rel="noopener noreferrer">
+          <a href="https://t.me/DLWqr1bot" target="_blank" rel="noopener noreferrer">
             <div className="project__image-container">
-              <div className="project__image-placeholder">TO-DO App</div>
+              <div className="project__image-placeholder">RealAnot</div>
             </div>
           </a>
+          <div className="project__info">
+            <h3 className="project__title">RealAnot</h3>
+            <h4 className="project__subtitle">AI-Powered Social Media Analyzer Bot</h4>
+            <p className="project__description">
+              Telegram bot that analyzes photos, text, and links from platforms like YouTube, Instagram, and news sites. Integrates web scraping, search, and AI vision/audio models to deliver rich content insights. Built with Python, Telegram Bot API, EnsembleData, ExaAI, Groq, llama-3.2, and Whisper.
+            </p>
+            <a href="https://t.me/DLWqr1bot" target="_blank" rel="noopener noreferrer">
+              <div className="project__live-2">Try it!</div>
+            </a>
+          </div>
         </div>
+
+
+
       </section>
 
       {/* Contact Section */}

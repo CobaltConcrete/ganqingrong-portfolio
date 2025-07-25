@@ -15,6 +15,11 @@ body {
   min-height: 100vh;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 /* Hero Section */
 .hero {
   position: relative;
@@ -164,6 +169,8 @@ section {
   margin: 0 auto;
   position: relative;
   z-index: 2;
+  zoom: 0.8;
+  transform-origin: top center;
 }
 
 .section-heading {
@@ -321,13 +328,24 @@ section {
 
 .project__title {
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
   background: linear-gradient(135deg, #51a2e9, #a878a2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: 1.2;
 }
+
+.project__subtitle {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #a878a2, #51a2e9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
 
 .project__description {
   font-size: 1.1rem;
