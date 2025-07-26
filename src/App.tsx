@@ -21,6 +21,10 @@ import HACX2 from './assets/Projects/HACX2.jpg';
 import TOSS0 from './assets/Projects/TOSS0.png';
 import TOSSPaper from './assets/Projects/TOSS_paper.pdf';
 import TOSSPoster from './assets/Projects/TOSS_poster.pdf';
+import ByeBike0 from './assets/Projects/ByeBike0.png';
+import ByeBike1 from './assets/Projects/ByeBike1.png';
+import ByeBikeArchitecture from './assets/Projects/ByeBikeArchitecture.jpg';
+import ByeBikePoster from './assets/Projects/ByeBike_poster.pdf';
 
 
 const App: React.FC = () => {
@@ -889,7 +893,32 @@ useEffect(() => {
           </div>
         </div>
 
-        <div className="project project-right">
+<div className="project project-right">
+  <a href={ByeBikePoster} target="_blank" rel="noopener noreferrer">
+    <div className="project__image-container">
+      <div className="project__image-placeholder">
+        <div className="project-carousel" ref={projectItemCarouselRef}>
+          <img src={ByeBike0} alt="ByeBike Screenshot 0" className="project-carousel__item" />
+          <img src={ByeBike1} alt="ByeBike Screenshot 1" className="project-carousel__item" />
+          <img src={ByeBikeArchitecture} alt="ByeBike Architecture Diagram" className="project-carousel__item" />
+        </div>
+      </div>
+    </div>
+  </a>
+  <div className="project__info">
+    <h3 className="project__title">ByeBike</h3>
+    <h4 className="project__subtitle">Walkway-Cycling Path Safety Surveillance</h4>
+    <p className="project__description">
+      Uses YOLOX to detect cyclists encroaching on pedestrian walkways and sends real-time alerts to both pedestrians and cyclists for safety. Built with OpenCV, YOLOX, and a polygon-based zone tracking pipeline.
+    </p>
+    <a href={ByeBikePoster} target="_blank" rel="noopener noreferrer">
+      <div className="project__live-2">Poster</div>
+    </a>
+  </div>
+</div>
+
+
+        <div className="project project-left">
           <a href="https://t.me/DLWqr1bot" target="_blank" rel="noopener noreferrer">
             <div className="project__image-container">
               <div className="project__image-placeholder">RealAnot</div>
