@@ -15,6 +15,12 @@ import Pantheon1 from './assets/Projects/Pantheon1.png';
 import Pantheon2 from './assets/Projects/Pantheon2.png';
 import Pantheon3 from './assets/Projects/Pantheon3.png';
 import PantheonVideo from './assets/Projects/PantheonVideo.mp4';
+import HACX0 from './assets/Projects/HACX0.jpg';
+import HACX1 from './assets/Projects/HACX1.jpg';
+import HACX2 from './assets/Projects/HACX2.jpg';
+import TOSS0 from './assets/Projects/TOSS0.png';
+import TOSSPaper from './assets/Projects/TOSS_paper.pdf';
+import TOSSPoster from './assets/Projects/TOSS_poster.pdf';
 
 
 const App: React.FC = () => {
@@ -755,7 +761,20 @@ useEffect(() => {
         <div className="project project-right">
           <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank" rel="noopener noreferrer">
             <div className="project__image-container">
-              <div className="project__image-placeholder">eCycle</div>
+              <div className="project__image-placeholder">
+                <div className="project-carousel" ref={projectItemCarouselRef}>
+                  <div className="project-carousel__item-wrapper">
+                    <iframe
+                      className="project-carousel__item"
+                      src="https://www.youtube.com/embed/ZFQg8qSyFPw?autoplay=1&mute=1&loop=1&playlist=ZFQg8qSyFPw&controls=1&modestbranding=1"
+                      title="eCycle Demo"
+                      frameBorder="0"
+                      allow="autoplay; encrypted-media; fullscreen"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </a>
           <div className="project__info">
@@ -767,8 +786,8 @@ useEffect(() => {
             <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank" rel="noopener noreferrer">
               <div className="project__live-2">Live app</div>
             </a>
-            <a href="https://github.com/bscottnz/life-invader-frontend" target="_blank" rel="noopener noreferrer">
-              <div className="project__live-2">Learn more</div>
+            <a href="https://www.youtube.com/watch?v=ZFQg8qSyFPw&list=TLGG5FOvEfBiBTcyNjA3MjAyNQ&t=22s" target="_blank" rel="noopener noreferrer">
+              <div className="project__live-2">Demo</div>
             </a>
           </div>
         </div>
@@ -778,23 +797,23 @@ useEffect(() => {
           <a href="https://thortol.itch.io/pantheon" target="_blank" rel="noopener noreferrer">
             <div className="project__image-container">
 
-<div className="project__image-placeholder">
-  <div className="project-carousel" ref={projectItemCarouselRef}>
-    <img src={Pantheon0} alt="Pantheon Screenshot 0" className="project-carousel__item" />
-    <video
-      src={PantheonVideo}
-      className="project-carousel__item"
-      muted
-      loop
-      playsInline
-      ref={projectItemVideoRef}
-    />
-    <img src={Pantheon1} alt="Pantheon Screenshot 1" className="project-carousel__item" />
-    <img src={Pantheon2} alt="Pantheon Screenshot 2" className="project-carousel__item" />
-    <img src={Pantheon3} alt="Pantheon Screenshot 3" className="project-carousel__item" />
-  </div>
-</div>
-
+            <div className="project__image-placeholder">
+              <div className="project-carousel" ref={projectItemCarouselRef}>
+                <img src={Pantheon0} alt="Pantheon Screenshot 0" className="project-carousel__item" />
+                <iframe
+                  className="project-carousel__item"
+                  src="https://www.youtube.com/embed/5Q-6Qt7IhZQ?autoplay=1&mute=1&loop=1&playlist=5Q-6Qt7IhZQ&controls=0&modestbranding=1"
+                  title="Pantheon Gameplay"
+                  frameBorder="0"
+                  allow="autoplay; encrypted-media; fullscreen"
+                  allowFullScreen
+                  style={{ width: '100%', height: '1080px', borderRadius: '12px' }}
+                />
+                <img src={Pantheon1} alt="Pantheon Screenshot 1" className="project-carousel__item" />
+                <img src={Pantheon2} alt="Pantheon Screenshot 2" className="project-carousel__item" />
+                <img src={Pantheon3} alt="Pantheon Screenshot 3" className="project-carousel__item" />
+              </div>
+            </div>
 
             </div>
           </a>
@@ -812,9 +831,15 @@ useEffect(() => {
 
 
         <div className="project project-right">
-          <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank" rel="noopener noreferrer">
+          <a href={TOSSPoster} target="_blank" rel="noopener noreferrer">
             <div className="project__image-container">
-              <div className="project__image-placeholder">TOSS</div>
+
+              <div className="project__image-placeholder">
+                <div className="project-carousel" ref={projectItemCarouselRef}>
+                  <img src={TOSS0} alt="TOSS Screenshot 1" className="project-carousel__item" />
+                </div>
+              </div>
+
             </div>
           </a>
           <div className="project__info">
@@ -823,11 +848,14 @@ useEffect(() => {
             <p className="project__description">
               Combines object tracking (YOLOv11) with semantic segmentation models (DeepLabv3+, MobileNetv3) to enhance video analysis accuracy. Built using MMSegmentation, OpenCV, and NumPy for advanced video analysis
             </p>
-            <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank" rel="noopener noreferrer">
-              <div className="project__live-2">Live app</div>
+            <a href="https://www.youtube.com/watch?v=nAbwYBqBZuU" target="_blank" rel="noopener noreferrer">
+              <div className="project__live-2">TOSS Demo</div>
             </a>
-            <a href="https://github.com/bscottnz/life-invader-frontend" target="_blank" rel="noopener noreferrer">
-              <div className="project__live-2">Learn more</div>
+            <a href={TOSSPoster} target="_blank" rel="noopener noreferrer">
+              <div className="project__live-2">Poster</div>
+            </a>
+            <a href={TOSSPaper} target="_blank" rel="noopener noreferrer">
+              <div className="project__live-2">Paper</div>
             </a>
           </div>
         </div>
@@ -835,7 +863,15 @@ useEffect(() => {
         <div className="project project-left">
           <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank" rel="noopener noreferrer">
             <div className="project__image-container">
-              <div className="project__image-placeholder">Berthing Bridge</div>
+
+                <div className="project__image-placeholder">
+                  <div className="project-carousel" ref={projectItemCarouselRef}>
+                    <img src={HACX0} alt="HACX Screenshot 0" className="project-carousel__item" />
+                    <img src={HACX1} alt="HACX Screenshot 1" className="project-carousel__item" />
+                    <img src={HACX2} alt="HACX Screenshot 2" className="project-carousel__item" />
+                  </div>
+                </div>
+
             </div>
           </a>
           <div className="project__info">

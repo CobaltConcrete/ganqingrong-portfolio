@@ -320,26 +320,27 @@ section {
   overflow: hidden;
   background: transparent;
   display: flex;
-  align-items: center;
+  align-items: center;      /* Center children vertically */
   justify-content: center;
 }
 
 .project__image-placeholder {
   overflow-x: auto;
-  overflow-y: hidden;       /* ✅ Disable vertical scroll */
+  overflow-y: hidden;       /* Disable vertical scroll */
   scroll-snap-type: x mandatory;
   border-radius: 12px;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0rem;
   display: flex;
-  align-items: center;
+  align-items: center;      /* Vertically center carousel container */
   height: 100%;
 
-  /* ✅ Hide scrollbars across browsers */
+  /* Hide scrollbars across browsers */
   scrollbar-width: none;          /* Firefox */
   -ms-overflow-style: none;       /* IE 10+ */
 }
 
-.project__image-placeholder::-webkit-scrollbar {
+.project__image-placeholder::-webkit-scrollbar,
+.project-carousel::-webkit-scrollbar {
   display: none;                  /* Chrome, Safari */
 }
 
@@ -347,25 +348,39 @@ section {
   display: flex;
   gap: 1rem;
   scroll-snap-type: x mandatory;
-  overflow-y: hidden;             /* ✅ Prevent vertical scroll in carousel */
+  overflow-y: hidden;          /* Prevent vertical scroll */
+  align-items: center;         /* Vertically center all carousel items */
 }
 
 .project-carousel__item {
   flex: 0 0 100%;
   max-width: 100%;
-  max-height: 360px;
-  height: 360px;
   width: 100%;
-  background-color: transparent;
-  object-fit: contain;        /* Show full image/video inside box without cropping */
-  object-position: center;;
+  height: 100%;
+  max-height: 360px;
+
+  object-fit: contain;
+  object-position: center;
   scroll-snap-align: center;
   border-radius: 12px;
+
+  background-color: transparent;
   background: transparent;
-  margin: auto 0;             /* NEW: fallback vertical centering */
+
+  display: block;
+  margin: auto 0;
 }
 
-
+.project-carousel__item-wrapper {
+  aspect-ratio: 16/10;
+  height: 360px; /* Ensures consistent height with image items */
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .project__info {
   padding: 1rem;
