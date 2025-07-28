@@ -1,5 +1,3 @@
-import React, { useEffect, useRef, useState } from 'react';
-
 const ExampleComponent = () => {
   // (move your hero section constants and logic here)
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

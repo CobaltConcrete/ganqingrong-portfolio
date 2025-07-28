@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import ImageCarousel from '../ImageCarousel/ImageCarousel.tsx';
 import Pantheon0 from '../../assets/Projects/Pantheon0.png';
 import Pantheon1 from '../../assets/Projects/Pantheon1.png';
@@ -28,7 +28,6 @@ const Project = () => {
   const PantheonVideo = "https://www.youtube.com/embed/5Q-6Qt7IhZQ?autoplay=1&mute=1&loop=1&playlist=5Q-6Qt7IhZQ&controls=1&modestbranding=1";
   const TOSSVideo = "https://www.youtube.com/embed/nAbwYBqBZuU?autoplay=1&mute=1&loop=1&playlist=nAbwYBqBZuU&controls=1&modestbranding=1";
   const projectItemVideoRef = useRef<HTMLVideoElement>(null);
-  const projectItemCarouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -131,6 +130,9 @@ const Project = () => {
           <a href={PantheonGame} target="_blank" rel="noopener noreferrer">
             <div className={styles['project__live-2']}>Play</div>
           </a>
+          <a href={PantheonVideo} target="_blank" rel="noopener noreferrer">
+            <div className={styles['project__live-2']}>Demo</div>
+          </a>
         </div>
       </div>
 
@@ -150,7 +152,7 @@ const Project = () => {
             Combines object tracking (YOLOv11) with semantic segmentation models (DeepLabv3+, MobileNetv3) to enhance video analysis accuracy. Built using MMSegmentation, OpenCV, and NumPy for advanced video analysis
           </p>
           <a href={TOSSVideo} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>TOSS Demo</div>
+            <div className={styles['project__live-2']}>Demo</div>
           </a>
           <a href={TOSSPoster} target="_blank" rel="noopener noreferrer">
             <div className={styles['project__live-2']}>Poster</div>

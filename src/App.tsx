@@ -1,4 +1,3 @@
-import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
 import Hero from './components/Hero/Hero.tsx';
 import Navigation from './components/Navigation/Navigation.tsx';

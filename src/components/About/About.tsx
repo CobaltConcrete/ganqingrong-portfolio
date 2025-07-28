@@ -1,16 +1,3 @@
-// src/components/Hero.tsx
-import React, { useEffect, useRef, useState } from 'react';
-import postgresIcon from '../../assets/icons/postgresql_color.svg';
-import reactIcon from '../../assets/icons/react_color.svg';
-import yoloIcon from '../../assets/icons/yolo_color.svg';
-// import blenderIcon from '../../assets/icons/blender.svg';
-import openaiIcon from '../../assets/icons/openai.svg';
-import pythonIcon from '../../assets/icons/python_color.svg';
-// import ttsIcon from '../../assets/icons/tts.webp';
-import prusaIcon from '../../assets/icons/prusa.svg';
-import stablediffusionIcon from '../../assets/icons/stablediffusion.png'; 
-// import databaseIcon from '../../assets/icons/database.svg';
-
 import styles from './About.module.css';
 
 const About = () => {

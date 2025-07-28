@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ImageCarousel from '../ImageCarousel/ImageCarousel.tsx';
 import DSOlogo from '../../assets/Work/DSOlogo.png';
 import DSO0 from '../../assets/Work/DSO0.png';
@@ -12,6 +12,11 @@ import DSTA1 from '../../assets/Work/DSTA1.jpg';
 import styles from './Work.module.css';
 
 const Work = () => {
+  const ASTARwebsite = 'https://www.a-star.edu.sg/';
+  const ASTARlinkedin = "https://www.linkedin.com/posts/nrfsg_ai-ai-ai-activity-7212432854327156736-krTl"
+  const DSOwebsite = 'https://www.dso.org.sg/';
+  const DSTAwebsite = 'https://www.dsta.gov.sg/';
+  const DSTAvideo = "https://www.youtube.com/embed/V8-s6kP_Y5Q?autoplay=1&mute=1&loop=1&playlist=V8-s6kP_Y5Q&controls=1&modestbranding=1";
   const carouselRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const itemsCount = 3;
@@ -75,19 +80,22 @@ const Work = () => {
                   </div>
 
                   <div>
-                    <img
-                      src={DSOlogo}
-                      alt="DSO Logo"
-                      style={{
-                        width: '100px',
-                        height: '100px',
-                        objectFit: 'cover',
-                        borderRadius: '50%',
-                        marginLeft: '-30%',    // move left
-                        marginTop: '10%',      // move down
-                      }}
-                    />
+                    <a href={DSOwebsite} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block' }}>
+                      <img
+                        src={DSOlogo}
+                        alt="DSO Logo"
+                        style={{
+                          width: '100px',
+                          height: '100px',
+                          objectFit: 'cover',
+                          borderRadius: '50%',
+                          marginLeft: '-30%',
+                          marginTop: '10%',
+                        }}
+                      />
+                    </a>
                   </div>
+
                 </div>
 
                 {/* B: Skills */}
@@ -117,7 +125,7 @@ const Work = () => {
                   <ImageCarousel
                     name="ASTAR"
                     images={[DSO0]}
-                  />                
+                  />
                 </div>
 
                 {/* D: Accomplishments */}
@@ -145,19 +153,22 @@ const Work = () => {
                   </div>
 
                   <div>
-                    <img
-                      src={ASTARlogo} // ← Make sure ASTAR is imported like: `import ASTAR from '.../path-to-astar-logo.png'`
-                      alt="A*STAR Logo"
-                      style={{
-                        width: '100px',
-                        height: '100px',
-                        objectFit: 'cover',
-                        borderRadius: '50%',
-                        marginLeft: '-30%',   // Shift left
-                        marginTop: '10%',     // Shift down
-                      }}
-                    />
+                    <a href={ASTARwebsite} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block' }}>
+                      <img
+                        src={ASTARlogo}
+                        alt="A*STAR Logo"
+                        style={{
+                          width: '100px',
+                          height: '100px',
+                          objectFit: 'cover',
+                          borderRadius: '50%',
+                          marginLeft: '-30%',
+                          marginTop: '10%',
+                        }}
+                      />
+                    </a>
                   </div>
+
                 </div>
 
                 <div className={styles.work__box} style={{ gridArea: 'skills' }}>
@@ -177,7 +188,7 @@ const Work = () => {
                 >
                   <ImageCarousel
                     name="ASTAR"
-                    images={[ASTAR0, ASTAR1, ASTAR2]}
+                    images={[{ src: ASTAR0, href: ASTARlinkedin }, { src: ASTAR1, href: ASTARlinkedin }, { src: ASTAR2, href: ASTARlinkedin }]}
                   />
                 </div>
 
@@ -204,67 +215,69 @@ const Work = () => {
                   </div>
 
                   <div>
-                    <img
-                      src={DSTAlogo} // Make sure this is imported
-                      alt="DSTA Logo"
-                      style={{
-                        width: '100px',
-                        height: '100px',
-                        objectFit: 'cover',
-                        borderRadius: '50%',
-                        marginLeft: '-30%',
-                        marginTop: '10%',
-                      }}
+                    <a href={DSTAwebsite} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block' }}>
+                      <img
+                        src={DSTAlogo}
+                        alt="DSTA Logo"
+                        style={{
+                          width: '100px',
+                          height: '100px',
+                          objectFit: 'cover',
+                          borderRadius: '50%',
+                          marginLeft: '-30%',
+                          marginTop: '10%',
+                        }}
+                      />
+                    </a>
+                  </div>
+
+                </div>
+                  <div className={styles.work__box} style={{ gridArea: 'skills' }}>
+                    <div className="font-bold underline mb-1" style={{ color: '#7dd3fc' }}>Skills</div>
+                    <ul className="list-disc list-inside text-sm space-y-1" style={{ color: '#ffffff' }}>
+                      <li>Computer Vision</li>
+                      <li>ArcFace</li>
+                      <li>AdaFace</li>
+                      <li>Facial Recognition</li>
+                      <li>Surveillance Systems</li>
+                    </ul>
+                  </div>
+                  <div className={styles.work__box} style={{ gridArea: 'image', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <ImageCarousel
+                      name="ASTAR"
+                      images={[ { src: DSTAvideo }, { src: DSTA0, href: DSTAwebsite }, { src: DSTA1, href: DSTAwebsite } ]}
                     />
                   </div>
-                </div>
-
-                <div className={styles.work__box} style={{ gridArea: 'skills' }}>
-                  <div className="font-bold underline mb-1" style={{ color: '#7dd3fc' }}>Skills</div>
-                  <ul className="list-disc list-inside text-sm space-y-1" style={{ color: '#ffffff' }}>
-                    <li>Computer Vision</li>
-                    <li>ArcFace</li>
-                    <li>AdaFace</li>
-                    <li>Facial Recognition</li>
-                    <li>Surveillance Systems</li>
-                  </ul>
-                </div>
-                <div className={styles.work__box} style={{ gridArea: 'image', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <ImageCarousel
-                    name="ASTAR"
-                    images={["https://www.youtube.com/embed/V8-s6kP_Y5Q?autoplay=1&mute=1&loop=1&playlist=V8-s6kP_Y5Q&controls=1&modestbranding=1", DSTA0, DSTA1]}
-                  />
-                </div>
-                <div className={styles.work__box} style={{ gridArea: 'accomplishments' }}>
-                  <div className="font-bold underline mb-1" style={{ color: '#7dd3fc' }}>Accomplishments</div>
-                  <ul className="list-disc list-inside text-sm space-y-1" style={{ color: '#ffffff' }}>
-                    <li>Evaluated CV-based threat detection in large-scale events (up to 1000 pax).</li>
-                    <li>Improved identification accuracy for NDP 2023 using facial recognition.</li>
-                    <li>Benchmarked ArcFace and AdaFace models for real-time deployment.</li>
-                  </ul>
+                  <div className={styles.work__box} style={{ gridArea: 'accomplishments' }}>
+                    <div className="font-bold underline mb-1" style={{ color: '#7dd3fc' }}>Accomplishments</div>
+                    <ul className="list-disc list-inside text-sm space-y-1" style={{ color: '#ffffff' }}>
+                      <li>Evaluated CV-based threat detection in large-scale events (up to 1000 pax).</li>
+                      <li>Improved identification accuracy for NDP 2023 using facial recognition.</li>
+                      <li>Benchmarked ArcFace and AdaFace models for real-time deployment.</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
+
+            <button className={`${styles.carousel__arrow} ${styles['carousel__arrow--right']}`} onClick={() => handleWorkArrowScroll(1)}>⟩</button>
           </div>
-
-          <button className={`${styles.carousel__arrow} ${styles['carousel__arrow--right']}`} onClick={() => handleWorkArrowScroll(1)}>⟩</button>
         </div>
-      </div>
 
-      {/* Pills navigation */}
-      <div className={styles.carousel__pills} role="tablist" aria-label="Work carousel pagination">
-        {[...Array(itemsCount)].map((_, i) => (
-          <button
-            key={i}
-            className={`${styles.carousel__pill} ${i === activeIndex ? styles.active : ''}`}
-            onClick={() => scrollToIndex(i)}
-            aria-label={`Go to slide ${i + 1}`}
-            role="tab"
-            aria-selected={i === activeIndex}
-            tabIndex={i === activeIndex ? 0 : -1}
-          />
-        ))}
-      </div>
+        {/* Pills navigation */}
+        <div className={styles.carousel__pills} role="tablist" aria-label="Work carousel pagination">
+          {[...Array(itemsCount)].map((_, i) => (
+            <button
+              key={i}
+              className={`${styles.carousel__pill} ${i === activeIndex ? styles.active : ''}`}
+              onClick={() => scrollToIndex(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              role="tab"
+              aria-selected={i === activeIndex}
+              tabIndex={i === activeIndex ? 0 : -1}
+            />
+          ))}
+        </div>
     </section>
   );
 

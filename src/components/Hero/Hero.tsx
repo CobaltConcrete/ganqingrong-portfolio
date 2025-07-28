@@ -1,5 +1,5 @@
 // src/components/Hero.tsx
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 // import ArrowIcon from './icons/ArrowIcon'; // Adjust the import path as necessary
 
 const Hero = () => {

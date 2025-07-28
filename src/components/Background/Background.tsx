@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 
 const Background = () => {
   // (move your hero section constants and logic here)
