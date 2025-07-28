@@ -1,0 +1,158 @@
+.work__carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.work__carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  gap: 1rem;
+  padding-inline: 0.5rem;       /* Horizontal padding */
+  scroll-padding-inline: 1rem;  /* Scroll snap alignment */
+}
+
+.carousel__track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE and Edge */
+}
+
+.carousel__track::-webkit-scrollbar {
+  display: none;               /* Chrome, Safari, Opera */
+}
+
+/* Work item styles */
+.work__item {
+  flex: 0 0 100%;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  scroll-snap-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.work__item:hover {
+  border-color: #51a2e9;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* Work grid styles */
+.work__grid {
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  /* Desktop 2x2 layout */
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "company skills"
+    "image accomplishments";
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .work__item {
+    flex-basis: 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .work__grid {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: repeat(4, auto) !important;
+    grid-template-areas:
+      "company"
+      "image"
+      "skills"
+      "accomplishments";
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .work__grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+  }
+}
+
+/* Box with border */
+.work__box {
+  padding: 1rem;
+  /* border-color: #51a2e9;
+  border-width: 1px;
+  border-style: solid; */
+}
+
+/* Carousel pills (indicators) */
+.carousel__pills {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
+
+.carousel__pill {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5); /* Inactive */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  outline: none;
+}
+
+.carousel__pill.active {
+  background-color: #51a2e9; /* Active color */
+}
+
+/* Carousel arrows */
+.carousel__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  color: white;
+  opacity: 0.1; /* Semi-transparent */
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+  transition: color 0.3s ease, opacity 0.3s ease;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.carousel__arrow:hover {
+  color: #51a2e9;
+  opacity: 1; /* Fully visible on hover */
+}
+
+.carousel__arrow--left {
+  left: 1.5rem;
+}
+
+.carousel__arrow--right {
+  right: 1.5rem;
+}
