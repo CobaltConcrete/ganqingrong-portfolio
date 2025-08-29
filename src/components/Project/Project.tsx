@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
 import ImageCarousel from '../ImageCarousel/ImageCarousel.tsx';
+import Eatsee0 from '../../assets/Projects/EatSee0.png'
+import Eatsee1 from '../../assets/Projects/EatSee1.png'
 import Pantheon0 from '../../assets/Projects/Pantheon0.png';
 import Pantheon1 from '../../assets/Projects/Pantheon1.png';
 import Pantheon2 from '../../assets/Projects/Pantheon2.png';
@@ -17,6 +19,8 @@ import ByeBikeArchitecture from '../../assets/Projects/ByeBikeArchitecture.jpg';
 import ByeBikePoster from '../../assets/Projects/ByeBike_poster.pdf';
 import BerthingBridgePaper from '../../assets/Projects/BerthingBridge_paper.pdf';
 import eCycle0 from '../../assets/Projects/eCycle0.png';
+import RealAnot0 from '../../assets/Projects/RealAnot0.png';
+import RealAnot1 from '../../assets/Projects/RealAnot1.png';
 
 import styles from './Project.module.css';
 
@@ -62,11 +66,14 @@ const Project = () => {
 
 
       <div className={`${styles.project} ${styles['project-left']}`}>
-        <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank" rel="noopener noreferrer">
-          <div className={styles['project__image-container']}>
-            <div className={styles['project__image-placeholder']}>EatSee</div>
+        <div className={styles['project__image-container']}>
+          <div className={styles['project__image-placeholder']}>
+            <ImageCarousel
+              name="Eatsee"
+              images={[{ src: Eatsee0 }, {src: Eatsee1 }]}
+            />
           </div>
-        </a>
+        </div>
 
         <div className={styles['project__info']}>
           <h3 className={styles['project__title']}>EatSee</h3>
@@ -75,12 +82,12 @@ const Project = () => {
             Telegram bot that matches users with compatible food buddies based on shared cuisine preferences and social compatibility, including age and gender preferences. Built with Flask, FastAPI, and PostgreSQL.
           </p>
 
-          <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank" rel="noopener noreferrer">
+          {/* <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank" rel="noopener noreferrer">
             <div className={styles['project__live-2']}>Live app</div>
           </a>
           <a href="https://github.com/bscottnz/life-invader-frontend" target="_blank" rel="noopener noreferrer">
             <div className={styles['project__live-2']}>Learn more</div>
-          </a>
+          </a> */}
         </div>
       </div>
 
@@ -210,11 +217,14 @@ const Project = () => {
       </div>
 
       <div className={`${styles.project} ${styles['project-left']}`}>
-        <a href="https://t.me/DLWqr1bot" target="_blank" rel="noopener noreferrer">
-          <div className={styles['project__image-container']}>
-            <div className={styles['project__image-placeholder']}>RealAnot</div>
+        <div className={styles['project__image-container']}>
+          <div className={styles['project__image-placeholder']}>
+            <ImageCarousel
+              name="RealAnot"
+              images={[{ src: RealAnot0 }, {src: RealAnot1 }]}
+            />
           </div>
-        </a>
+        </div>
         <div className={styles['project__info']}>
           <h3 className={styles['project__title']}>RealAnot</h3>
           <h4 className={styles['project__subtitle']}>AI-Powered Social Media Analyzer Bot</h4>
