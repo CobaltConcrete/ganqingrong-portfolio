@@ -14,13 +14,13 @@ import CS180Project0 from "./components/CS180/CS180Project0.tsx";
 const App: React.FC = () => {
   return (
     <div className="App">
+      <Navigation />
+
       <Routes>
-        {/* Home Page */}
         <Route
           path="/"
           element={
             <>
-              <Navigation />
               <Hero />
               <Background />
               <About />
@@ -28,19 +28,14 @@ const App: React.FC = () => {
               <Project />
               <Contact />
               <Footer />
+              <CS180Project0 />
             </>
           }
         />
 
-        {/* CS180 Page */}
         <Route
           path="/cs180-project0"
-          element={
-            <>
-              <CS180Project0 />
-              <Footer />
-            </>
-          }
+          element={<CS180Project0 />}
         />
       </Routes>
     </div>
