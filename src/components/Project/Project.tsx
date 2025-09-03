@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { Link } from "react-router-dom";
 import ImageCarousel from '../ImageCarousel/ImageCarousel.tsx';
 import Eatsee0 from '../../assets/Projects/EatSee0.png'
 import Eatsee1 from '../../assets/Projects/EatSee1.png'
