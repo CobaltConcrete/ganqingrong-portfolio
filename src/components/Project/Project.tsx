@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Link } from "react-router-dom";
 import ImageCarousel from '../ImageCarousel/ImageCarousel.tsx';
 import Eatsee0 from '../../assets/Projects/EatSee0.png'
 import Eatsee1 from '../../assets/Projects/EatSee1.png'
@@ -236,6 +237,35 @@ const Project = () => {
           </a>
         </div>
       </div>
+
+
+{/* <div className={`${styles.project} ${styles['project-right']}`}>
+  <div className={styles['project__image-container']}>
+    <div className={styles['project__image-placeholder']}>
+      <ImageCarousel
+        name="CS180"
+        images={[
+          { src: RealAnot0 }, 
+          { src: RealAnot1 }
+        ]}
+      />
+    </div>
+  </div>
+
+  <div className={styles['project__info']}>
+    <h3 className={styles['project__title']}>CS180</h3>
+    <h4 className={styles['project__subtitle']}>Advanced Coursework Project</h4>
+    <p className={styles['project__description']}>
+      A dedicated page showcasing details for CS180. Built as part of the portfolio using React Router to enable
+      smooth navigation between project pages.
+    </p>
+
+    <Link to="/cs180">
+      <div className={styles['project__live-2']}>View Page</div>
+    </Link>
+  </div>
+</div> */}
+
 
 
 

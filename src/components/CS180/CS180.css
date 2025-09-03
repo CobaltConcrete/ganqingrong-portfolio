@@ -1,0 +1,111 @@
+.cs180-page {
+  padding-top: 6rem; /* clears fixed nav bar */
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #fafafa;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.cs180-project {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  padding: 1.5rem;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.cs180-project:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(81, 162, 233, 0.3);
+}
+
+.cs180-project-right {
+  direction: rtl;
+}
+
+.cs180-project-right > * {
+  direction: ltr;
+}
+
+.cs180-image-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.cs180-image-small {
+  width: 50%;
+  height: auto;
+}
+
+
+.cs180-image {
+  max-width: 100%;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.cs180-info {
+  padding: 0.5rem;
+}
+
+.cs180-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #51a2e9, #a878a2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cs180-subtitle {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #a878a2, #51a2e9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cs180-description {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .cs180-project {
+    grid-template-columns: 1fr;
+  }
+  .cs180-project-right {
+    direction: ltr;
+  }
+  .cs180-title {
+    font-size: 1.5rem;
+  }
+}
+
+.btn { 
+  display: inline-block;
+  margin: 0.5rem 1rem 0.5rem 0;
+  padding: 0.75rem 1.5rem;
+  background: rgba(81, 162, 233, 0.1);
+  border: 2px solid #51a2e9;
+  border-radius: 25px;
+  color: #51a2e9;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn:hover { 
+  background: rgba(81, 162, 233, 0.2);
+  transform: translateY(-2px);
+}
