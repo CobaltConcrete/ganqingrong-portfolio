@@ -108,7 +108,7 @@ const Project = () => {
           <p className={styles['project__description']}>
             Web app to locate nearby e-waste disposal, recycling, and repair facilities. Includes a community forum for users to post questions, share pictures, and connect with businesses to confirm accepted items, promoting responsible e-waste management. Built with Flask, PostgreSQL, and Google Maps API.
           </p>
-          <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank" rel="noopener noreferrer">
+          <a href="https://ecycle-1.onrender.com/" target="_blank" rel="noopener noreferrer">
             <div className={styles['project__live-2']}>Live app</div>
           </a>
           <a href={eCycleVideo} target="_blank" rel="noopener noreferrer">
