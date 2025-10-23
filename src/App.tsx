@@ -1,15 +1,15 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
-import Hero from "/src/components/Hero/Hero.tsx";
-import Navigation from "./components/Navigation/Navigation.tsx";
-import Background from "./components/Background/Background.tsx";
-import About from "./components/About/About.tsx";
-import Work from "./components/Work/Work.tsx";
-import Project from "./components/Project/Project.tsx";
-import Contact from "./components/Contact/Contact.tsx";
-import Footer from "./components/Footer/Footer.tsx";
-import CS180Project0 from "./components/CS180/CS180Project0.tsx";
+import Hero from "/src/components/Hero/Hero";
+import Navigation from "./components/Navigation/Navigation";
+import Background from "./components/Background/Background";
+import About from "./components/About/About";
+import Work from "./components/Work/Work";
+import Project from "./components/Project/Project";
+import Contact from "./components/Contact/Contact";
+import Footer from "./components/Footer/Footer";
+import CS180Project0 from "./components/CS180/CS180Project0";
 
 const App: React.FC = () => {
   return (
