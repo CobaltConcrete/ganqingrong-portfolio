@@ -1,26 +1,26 @@
 import { useEffect, useRef } from 'react';
 import ImageCarousel from '../ImageCarousel/ImageCarousel.tsx';
-import Eatsee0 from '/src/assets/Projects/EatSee0.png'
-import Eatsee1 from '/src/assets/Projects/EatSee1.png'
-import Pantheon0 from '/src/assets/Projects/Pantheon0.png';
-import Pantheon1 from '/src/assets/Projects/Pantheon1.png';
-import Pantheon2 from '/src/assets/Projects/Pantheon2.png';
-import Pantheon3 from '/src/assets/Projects/Pantheon3.png';
-// import PantheonVideo from '/src/assets/Projects/PantheonVideo.mp4';
-import HACX0 from '/src/assets/Projects/HACX0.jpg';
-import HACX1 from '/src/assets/Projects/HACX1.jpg';
-import HACX2 from '/src/assets/Projects/HACX2.jpg';
-import TOSS0 from '/src/assets/Projects/TOSS0.png';
-import TOSSPaper from '/src/assets/Projects/TOSS_paper.pdf';
-import TOSSPoster from '/src/assets/Projects/TOSS_poster.pdf';
-import ByeBike0 from '/src/assets/Projects/ByeBike0.png';
-import ByeBike1 from '/src/assets/Projects/ByeBike1.png';
-import ByeBikeArchitecture from '/src/assets/Projects/ByeBikeArchitecture.jpg';
-import ByeBikePoster from '/src/assets/Projects/ByeBike_poster.pdf';
-import BerthingBridgePaper from '/src/assets/Projects/BerthingBridge_paper.pdf';
-import eCycle0 from '/src/assets/Projects/eCycle0.png';
-import RealAnot0 from '/src/assets/Projects/RealAnot0.png';
-import RealAnot1 from '/src/assets/Projects/RealAnot1.png';
+import Eatsee0 from '../../assets/Projects/Eatsee0.png'
+import Eatsee1 from '../../assets/Projects/Eatsee1.png'
+import Pantheon0 from '../../assets/Projects/Pantheon0.png';
+import Pantheon1 from '../../assets/Projects/Pantheon1.png';
+import Pantheon2 from '../../assets/Projects/Pantheon2.png';
+import Pantheon3 from '../../assets/Projects/Pantheon3.png';
+// import PantheonVideo from '../../assets/Projects/PantheonVideo.mp4';
+import HACX0 from '../../assets/Projects/HACX0.jpg';
+import HACX1 from '../../assets/Projects/HACX1.jpg';
+import HACX2 from '../../assets/Projects/HACX2.jpg';
+import TOSS0 from '../../assets/Projects/TOSS0.png';
+import TOSSPaper from '../../assets/Projects/TOSS_paper.pdf';
+import TOSSPoster from '../../assets/Projects/TOSS_poster.pdf';
+import ByeBike0 from '../../assets/Projects/ByeBike0.png';
+import ByeBike1 from '../../assets/Projects/ByeBike1.png';
+import ByeBikeArchitecture from '../../assets/Projects/ByeBikeArchitecture.jpg';
+import ByeBikePoster from '../../assets/Projects/ByeBike_poster.pdf';
+import BerthingBridgePaper from '../../assets/Projects/BerthingBridge_paper.pdf';
+import eCycle0 from '../../assets/Projects/eCycle0.png';
+import RealAnot0 from '../../assets/Projects/RealAnot0.png';
+import RealAnot1 from '../../assets/Projects/RealAnot1.png';
 
 import styles from './Project.module.css';
 
