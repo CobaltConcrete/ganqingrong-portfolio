@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
-import Hero from "./components/Hero/Hero.tsx";
+import Hero from "/src/components/Hero/Hero.tsx";
 import Navigation from "./components/Navigation/Navigation.tsx";
 import Background from "./components/Background/Background.tsx";
 import About from "./components/About/About.tsx";
