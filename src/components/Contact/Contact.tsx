@@ -1,4 +1,4 @@
-const ExampleComponent = () => {
+const Contact = () => {
   // (move your hero section constants and logic here)
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ const ExampleComponent = () => {
         <p className="contact__text">
           Have a question or want to work together? Leave your details and I'll get back to you as soon as possible.
         </p>
-        <form className="contact__form" action="https://formspree.io/f/xdoprgpv" method="POST" onSubmit={handleSubmit}>
+        <form className="contact__form" action="https://formspree.io/f/mldpykzz" method="POST" onSubmit={handleSubmit}>
           <input className="contact__form-name" name="name" placeholder="Name" required />
           <input className="contact__form-email" type="email" name="_replyto" placeholder="Email" required />
           <textarea className="contact__form-message" name="message" placeholder="Message" required />
@@ -39,4 +39,4 @@ const ExampleComponent = () => {
   );
 };
 
-export default ExampleComponent;
+export default Contact;

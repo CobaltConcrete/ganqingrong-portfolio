@@ -1,6 +1,6 @@
 
 
-const ExampleComponent = () => {
+const Footer = () => {
     
     return (
         <footer className="footer">
@@ -24,4 +24,4 @@ const ExampleComponent = () => {
     );
 };
 
-export default ExampleComponent;
+export default Footer;
