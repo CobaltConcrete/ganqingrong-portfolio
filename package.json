@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://cobaltconcrete.github.io/ganqingrong-portfolio/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
