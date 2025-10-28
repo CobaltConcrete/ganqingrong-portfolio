@@ -23,7 +23,6 @@ import eCycle1 from '../../assets/Projects/eCycle1.png';
 import eCycle2 from '../../assets/Projects/eCycle2.png';
 import eCycle3 from '../../assets/Projects/eCycle3.png';
 import eCycle4 from '../../assets/Projects/eCycle4.png';
-import eCycle5 from '../../assets/Projects/eCycle5.png';
 import RealAnot0 from '../../assets/Projects/RealAnot0.png';
 import RealAnot1 from '../../assets/Projects/RealAnot1.png';
 import OSPS0 from '../../assets/Projects/OSPS0.png';
