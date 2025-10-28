@@ -9,16 +9,55 @@ type CarouselMedia = {
 type ImageCarouselProps = {
   images: (string | CarouselMedia)[];
   name: string;
+  autoplayOnView?: boolean;
+  autoScrollInterval?: number;
+  pauseAfterClick?: number; // milliseconds to pause after manual click
 };
 
-const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, name }) => {
-  // Normalize images to array of CarouselMedia
+const ImageCarousel: React.FC<ImageCarouselProps> = ({
+  images,
+  name,
+  autoplayOnView = false,
+  autoScrollInterval = 5000,
+  pauseAfterClick = 0
+}) => {
   const normalizedImages: CarouselMedia[] = images.map(img =>
     typeof img === 'string' ? { src: img } : img
   );
 
   const carouselRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [inView, setInView] = useState(!autoplayOnView);
+  const [pauseTimeout, setPauseTimeout] = useState<NodeJS.Timeout | null>(null);
+
+  // IntersectionObserver to detect when carousel enters viewport
+  useEffect(() => {
+    if (!autoplayOnView) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.5 }
+    );
+
+    if (carouselRef.current) observer.observe(carouselRef.current);
+    return () => observer.disconnect();
+  }, [autoplayOnView]);
+
+  // Auto-scroll effect
+  useEffect(() => {
+    if (!inView) return;
+
+    const interval = setInterval(() => {
+      if (pauseTimeout) return; // skip auto-scroll while paused
+      setActiveIndex(prev => {
+        const next = (prev + 1) % normalizedImages.length;
+        scrollToIndex(next);
+        return next;
+      });
+    }, autoScrollInterval);
+
+    return () => clearInterval(interval);
+  }, [inView, normalizedImages.length, autoScrollInterval, pauseTimeout]);
 
   const scrollToIndex = (index: number) => {
     if (!carouselRef.current) return;
@@ -26,6 +65,18 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, name }) => {
     carouselRef.current.scrollTo({ left: index * itemWidth, behavior: 'smooth' });
   };
 
+  // Handle manual clicks
+  const handlePillClick = (index: number) => {
+    scrollToIndex(index);
+    setActiveIndex(index);
+
+    // Pause auto-scroll for specified duration
+    if (pauseTimeout) clearTimeout(pauseTimeout);
+    const timeout = setTimeout(() => setPauseTimeout(null), pauseAfterClick);
+    setPauseTimeout(timeout);
+  };
+
+  // Update activeIndex on manual scroll
   const onScroll = () => {
     if (!carouselRef.current) return;
     const scrollLeft = carouselRef.current.scrollLeft;
@@ -97,7 +148,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, name }) => {
           <button
             key={`${name}-pill-${i}`}
             className={`${styles.imageCarouselPill} ${i === activeIndex ? styles.active : ''}`}
-            onClick={() => scrollToIndex(i)}
+            onClick={() => handlePillClick(i)}
           />
         ))}
       </div>

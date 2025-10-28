@@ -19,18 +19,28 @@ import ByeBikeArchitecture from '../../assets/Projects/ByeBikeArchitecture.jpg';
 import ByeBikePoster from '../../assets/Projects/ByeBike_poster.pdf';
 import BerthingBridgePaper from '../../assets/Projects/BerthingBridge_paper.pdf';
 import eCycle0 from '../../assets/Projects/eCycle0.png';
+import eCycle1 from '../../assets/Projects/eCycle1.png';
+import eCycle2 from '../../assets/Projects/eCycle2.png';
+import eCycle3 from '../../assets/Projects/eCycle3.png';
+import eCycle4 from '../../assets/Projects/eCycle4.png';
+import eCycle5 from '../../assets/Projects/eCycle5.png';
 import RealAnot0 from '../../assets/Projects/RealAnot0.png';
 import RealAnot1 from '../../assets/Projects/RealAnot1.png';
+import OSPS0 from '../../assets/Projects/OSPS0.png';
+import OSPS1 from '../../assets/Projects/OSPS1.png';
+import OSPS2 from '../../assets/Projects/OSPS2.png';
 
 import styles from './Project.module.css';
 
 const Project = () => {
-  // (move your hero section constants and logic here)
   const BerthingBridgeVideo = "https://www.youtube.com/embed/S7lvtBrAsu4?autoplay=1&mute=1&loop=1&playlist=S7lvtBrAsu4&controls=1&modestbranding=1";
   const eCycleVideo = "https://www.youtube.com/embed/ZFQg8qSyFPw?autoplay=1&mute=1&loop=1&playlist=ZFQg8qSyFPw&controls=1&modestbranding=1";
+  const eCycleWebsite = "https://ecycle-1.onrender.com/"
   const PantheonGame = "https://thortol.itch.io/pantheon";
   const PantheonVideo = "https://www.youtube.com/embed/5Q-6Qt7IhZQ?autoplay=1&mute=1&loop=1&playlist=5Q-6Qt7IhZQ&controls=1&modestbranding=1";
   const TOSSVideo = "https://www.youtube.com/embed/nAbwYBqBZuU?autoplay=1&mute=1&loop=1&playlist=nAbwYBqBZuU&controls=1&modestbranding=1";
+  const OSPSTelebot = "https://t.me/OweSPayS_bot"
+  
   const projectItemVideoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -64,8 +74,148 @@ const Project = () => {
       <h2 className={`${styles['projects__heading']} section-heading`}>Projects</h2>
 
 
+      <div className={`${styles.project} ${styles['project-right']}`}>
+        <div className={styles['project__image-container']}>
+          <div className={styles['project__image-placeholder']}>
+            <ImageCarousel
+              name="ECYCLE"
+              images={[{ src: eCycle0, href: eCycleWebsite }, { src: eCycle1, href: eCycleWebsite }, { src: eCycle2, href: eCycleWebsite }, { src: eCycle3, href: eCycleWebsite }, { src: eCycle4, href: eCycleWebsite }, { src: eCycleVideo } ]}
+            />
+          </div>
+        </div>
+        <div className={styles['project__info']}>
+          <h3 className={styles['project__title']}>eCycle</h3>
+          <h4 className={styles['project__subtitle']}>E-Waste Disposal & Community Platform</h4>
+          <p className={styles['project__description']}>
+            Web app to locate nearby e-waste disposal, recycling, and repair facilities. Includes a community forum for users to post questions, share pictures, and connect with businesses to confirm accepted items, promoting responsible e-waste management. Built with Flask, PostgreSQL, and Google Maps API.
+          </p>
+          <a href={eCycleWebsite} target="_blank" rel="noopener noreferrer">
+            <div className={styles['project__live-2']}>Live app</div>
+          </a>
+          <a href={eCycleVideo} target="_blank" rel="noopener noreferrer">
+            <div className={styles['project__live-2']}>Demo</div>
+          </a>
+        </div>
+      </div>
 
       <div className={`${styles.project} ${styles['project-left']}`}>
+        <div className={styles['project__image-container']}>
+          <div className={styles['project__image-placeholder']}>
+            <ImageCarousel
+              name="TOSS"
+              images={[{ src: TOSS0, href: TOSSPoster }, { src: TOSSVideo }]}
+            />
+          </div>
+        </div>
+        <div className={styles['project__info']}>
+          <h3 className={styles['project__title']}>TOSS</h3>
+          <h4 className={styles['project__subtitle']}>Tracking Oriented Semantic Segmentation</h4>
+          <p className={styles['project__description']}>
+            Combines object tracking (YOLOv11) with semantic segmentation models (DeepLabv3+, MobileNetv3) to enhance video analysis accuracy. Built using OpenCV and MMsegmentation for advanced video analysis
+          </p>
+          <a href={TOSSVideo} target="_blank" rel="noopener noreferrer">
+            <div className={styles['project__live-2']}>Demo</div>
+          </a>
+          <a href={TOSSPoster} target="_blank" rel="noopener noreferrer">
+            <div className={styles['project__live-2']}>Poster</div>
+          </a>
+          <a href={TOSSPaper} target="_blank" rel="noopener noreferrer">
+            <div className={styles['project__live-2']}>Paper</div>
+          </a>
+        </div>
+      </div>
+
+      <div className={`${styles.project} ${styles['project-right']}`}>
+        <div className={styles['project__image-container']}>
+          <div className={styles['project__image-placeholder']}>
+            <ImageCarousel
+              name="HACX"
+              images={[{ src: HACX0, href: BerthingBridgeVideo }, { src: HACX1, href: BerthingBridgeVideo }, { src: HACX2, href: BerthingBridgeVideo }, { src: BerthingBridgeVideo }]}
+            />
+          </div>
+        </div>
+        <div className={styles['project__info']}>
+          <h3 className={styles['project__title']}>Berthing Bridge</h3>
+          <h4 className={styles['project__subtitle']}>Automated Ship Berthing System</h4>
+          <p className={styles['project__description']}>
+            Utilizes computer vision with YOLOX alongside Arduino ultrasonic sensors to accurately detect embarkation points and measure distances, streamlining and accelerating the ship berthing process with replica model. Built with OpenCV, YOLOX, Arduino, and 3D Printing.
+          </p>
+          <a href={BerthingBridgeVideo} target="_blank" rel="noopener noreferrer">
+            <div className={styles['project__live-2']}>Demo</div>
+          </a>
+          <a href={BerthingBridgePaper} target="_blank" rel="noopener noreferrer">
+            <div className={styles['project__live-2']}>Paper</div>
+          </a>
+        </div>
+      </div>
+
+      <div className={`${styles.project} ${styles['project-left']}`}>
+        <div className={styles['project__image-container']}>
+          <div className={styles['project__image-placeholder']}>
+            <ImageCarousel
+              name="ByeBike"
+              images={[{ src: ByeBike0, href: ByeBikePoster }, { src: ByeBike1, href: ByeBikePoster }, { src: ByeBikeArchitecture, href: ByeBikePoster }]}
+            />
+          </div>
+        </div>
+        <div className={styles['project__info']}>
+          <h3 className={styles['project__title']}>ByeBike</h3>
+          <h4 className={styles['project__subtitle']}>Walkway-Cycling Path Safety Surveillance</h4>
+          <p className={styles['project__description']}>
+            Uses YOLOX to detect cyclists encroaching on pedestrian walkways and sends real-time alerts to both pedestrians and cyclists for safety. Built with OpenCV, YOLOX, and a polygon-based zone tracking pipeline.
+          </p>
+          <a href={ByeBikePoster} target="_blank" rel="noopener noreferrer">
+            <div className={styles['project__live-2']}>Poster</div>
+          </a>
+        </div>
+      </div>
+      
+      <div className={`${styles.project} ${styles['project-right']}`}>
+        <div className={styles['project__image-container']}>
+          <div className={styles['project__image-placeholder']}>
+            <ImageCarousel
+              name="Pantheon"
+              images={[{ src: Pantheon0, href: PantheonVideo }, { src: PantheonVideo }, { src: Pantheon1, href: PantheonVideo }, { src: Pantheon2, href: PantheonVideo }, { src: Pantheon3, href: PantheonVideo }]}
+            />
+          </div>
+        </div>
+        <div className={styles['project__info']}>
+          <h3 className={styles['project__title']}>Pantheon</h3>
+          <h4 className={styles['project__subtitle']}>AI-Powered Dungeon Crawler Game</h4>
+          <p className={styles['project__description']}>
+            Top-down shooter dungeon crawler allowing players to spawn custom weapons, items, and status buffs using large language models. Built with Unity, OpenAPI, and FastAPI.
+          </p>
+          <a href={PantheonGame} target="_blank" rel="noopener noreferrer">
+            <div className={styles['project__live-2']}>Play</div>
+          </a>
+          <a href={PantheonVideo} target="_blank" rel="noopener noreferrer">
+            <div className={styles['project__live-2']}>Demo</div>
+          </a>
+        </div>
+      </div>
+
+      <div className={`${styles.project} ${styles['project-left']}`}>
+        <div className={styles['project__image-container']}>
+          <div className={styles['project__image-placeholder']}>
+            <ImageCarousel
+              name="O$P$"
+              images={[{ src: OSPS0, href: OSPSTelebot }, { src: OSPS1, href: OSPSTelebot }, { src: OSPS2, href: OSPSTelebot }]}
+            />
+          </div>
+        </div>
+        <div className={styles['project__info']}>
+          <h3 className={styles['project__title']}>O$P$</h3>
+          <h4 className={styles['project__subtitle']}>Social Debt Tracker</h4>
+          <p className={styles['project__description']}>
+            Telegram bot designed to simplify shared expenses and debt reminders among friends. Handles expense logging, balance reconciliation, and automated settlement nudges with smart notifications. Built using Supabase for persistent data storage, Python, and Telegram Bot API. Deployed on Heroku with lightweight serverless logic for reliability and low cost.
+          </p>
+          <a href="https://t.me/OweSPayS_bot" target="_blank" rel="noopener noreferrer">
+            <div className={styles['project__live-2']}>Try it!</div>
+          </a>
+        </div>
+      </div>
+
+      <div className={`${styles.project} ${styles['project-right']}`}>
         <div className={styles['project__image-container']}>
           <div className={styles['project__image-placeholder']}>
             <ImageCarousel
@@ -91,131 +241,6 @@ const Project = () => {
         </div>
       </div>
 
-
-      <div className={`${styles.project} ${styles['project-right']}`}>
-        <div className={styles['project__image-container']}>
-          <div className={styles['project__image-placeholder']}>
-            <ImageCarousel
-              name="ECYCLE"
-              images={[{ src: eCycleVideo }, { src: eCycle0, href: eCycleVideo }]}
-            />
-          </div>
-        </div>
-
-        <div className={styles['project__info']}>
-          <h3 className={styles['project__title']}>eCycle</h3>
-          <h4 className={styles['project__subtitle']}>E-Waste Disposal & Community Platform</h4>
-          <p className={styles['project__description']}>
-            Web app to locate nearby e-waste disposal, recycling, and repair facilities. Includes a community forum for users to post questions, share pictures, and connect with businesses to confirm accepted items, promoting responsible e-waste management. Built with Flask, PostgreSQL, and Google Maps API.
-          </p>
-          <a href="https://ecycle-1.onrender.com/" target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Live app</div>
-          </a>
-          <a href={eCycleVideo} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Demo</div>
-          </a>
-        </div>
-      </div>
-
-
-
-      <div className={`${styles.project} ${styles['project-left']}`}>
-        <div className={styles['project__image-container']}>
-          <div className={styles['project__image-placeholder']}>
-            <ImageCarousel
-              name="Pantheon"
-              images={[{ src: Pantheon0, href: PantheonVideo }, { src: PantheonVideo }, { src: Pantheon1, href: PantheonVideo }, { src: Pantheon2, href: PantheonVideo }, { src: Pantheon3, href: PantheonVideo }]}
-            />
-          </div>
-        </div>
-        <div className={styles['project__info']}>
-          <h3 className={styles['project__title']}>Pantheon</h3>
-          <h4 className={styles['project__subtitle']}>AI-Powered Dungeon Crawler Game</h4>
-          <p className={styles['project__description']}>
-            Top-down shooter dungeon crawler allowing players to spawn custom weapons, items, and buffs using large language models. Built with Unity, OpenAPI, and FastAPI.
-          </p>
-          <a href={PantheonGame} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Play</div>
-          </a>
-          <a href={PantheonVideo} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Demo</div>
-          </a>
-        </div>
-      </div>
-
-      <div className={`${styles.project} ${styles['project-right']}`}>
-        <div className={styles['project__image-container']}>
-          <div className={styles['project__image-placeholder']}>
-            <ImageCarousel
-              name="TOSS"
-              images={[{ src: TOSS0, href: TOSSPoster }, { src: TOSSVideo }]}
-            />
-          </div>
-        </div>
-        <div className={styles['project__info']}>
-          <h3 className={styles['project__title']}>TOSS</h3>
-          <h4 className={styles['project__subtitle']}>Tracking Oriented Semantic Segmentation</h4>
-          <p className={styles['project__description']}>
-            Combines object tracking (YOLOv11) with semantic segmentation models (DeepLabv3+, MobileNetv3) to enhance video analysis accuracy. Built using MMSegmentation, OpenCV, and NumPy for advanced video analysis
-          </p>
-          <a href={TOSSVideo} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Demo</div>
-          </a>
-          <a href={TOSSPoster} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Poster</div>
-          </a>
-          <a href={TOSSPaper} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Paper</div>
-          </a>
-        </div>
-      </div>
-
-      <div className={`${styles.project} ${styles['project-left']}`}>
-        <div className={styles['project__image-container']}>
-          <div className={styles['project__image-placeholder']}>
-            <ImageCarousel
-              name="HACX"
-              images={[{ src: HACX0, href: BerthingBridgeVideo }, { src: HACX1, href: BerthingBridgeVideo }, { src: HACX2, href: BerthingBridgeVideo }, { src: BerthingBridgeVideo }]}
-            />
-          </div>
-        </div>
-        <div className={styles['project__info']}>
-          <h3 className={styles['project__title']}>Berthing Bridge</h3>
-          <h4 className={styles['project__subtitle']}>Automated Ship Berthing System</h4>
-          <p className={styles['project__description']}>
-            Utilizes computer vision with YOLOX alongside Arduino ultrasonic sensors to accurately detect embarkation points and measure distances, streamlining and accelerating the ship berthing process with replica model. Built with OpenCV, YOLOX, Arduino, and 3D Printing.
-          </p>
-          <a href={BerthingBridgeVideo} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Demo</div>
-          </a>
-          <a href={BerthingBridgePaper} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Paper</div>
-          </a>
-        </div>
-      </div>
-
-      <div className={`${styles.project} ${styles['project-right']}`}>
-        <div className={styles['project__image-container']}>
-          <div className={styles['project__image-placeholder']}>
-            <ImageCarousel
-              name="ByeBike"
-              images={[{ src: ByeBike0, href: ByeBikePoster }, { src: ByeBike1, href: ByeBikePoster }, { src: ByeBikeArchitecture, href: ByeBikePoster }]}
-            />
-          </div>
-        </div>
-
-        <div className={styles['project__info']}>
-          <h3 className={styles['project__title']}>ByeBike</h3>
-          <h4 className={styles['project__subtitle']}>Walkway-Cycling Path Safety Surveillance</h4>
-          <p className={styles['project__description']}>
-            Uses YOLOX to detect cyclists encroaching on pedestrian walkways and sends real-time alerts to both pedestrians and cyclists for safety. Built with OpenCV, YOLOX, and a polygon-based zone tracking pipeline.
-          </p>
-          <a href={ByeBikePoster} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Poster</div>
-          </a>
-        </div>
-      </div>
-
       <div className={`${styles.project} ${styles['project-left']}`}>
         <div className={styles['project__image-container']}>
           <div className={styles['project__image-placeholder']}>
@@ -231,43 +256,11 @@ const Project = () => {
           <p className={styles['project__description']}>
             Telegram bot that analyzes photos, text, and links from platforms like YouTube, Instagram, and news sites. Integrates web scraping, search, and AI vision/audio models to deliver rich content insights. Built with Python, Telegram Bot API, EnsembleData, ExaAI, Groq, llama-3.2, and Whisper.
           </p>
-          <a href="https://t.me/DLWqr1bot" target="_blank" rel="noopener noreferrer">
+          {/* <a href="https://t.me/DLWqr1bot" target="_blank" rel="noopener noreferrer">
             <div className={styles['project__live-2']}>Try it!</div>
-          </a>
+          </a> */}
         </div>
       </div>
-
-
-{/* <div className={`${styles.project} ${styles['project-right']}`}>
-  <div className={styles['project__image-container']}>
-    <div className={styles['project__image-placeholder']}>
-      <ImageCarousel
-        name="CS180"
-        images={[
-          { src: RealAnot0 }, 
-          { src: RealAnot1 }
-        ]}
-      />
-    </div>
-  </div>
-
-  <div className={styles['project__info']}>
-    <h3 className={styles['project__title']}>CS180</h3>
-    <h4 className={styles['project__subtitle']}>Advanced Coursework Project</h4>
-    <p className={styles['project__description']}>
-      A dedicated page showcasing details for CS180. Built as part of the portfolio using React Router to enable
-      smooth navigation between project pages.
-    </p>
-
-    <Link to="/cs180">
-      <div className={styles['project__live-2']}>View Page</div>
-    </Link>
-  </div>
-</div> */}
-
-
-
-
 
     </section>
   );

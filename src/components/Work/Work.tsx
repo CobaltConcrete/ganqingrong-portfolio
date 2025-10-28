@@ -20,9 +20,13 @@ const Work = () => {
   const DSTAvideo = "https://www.youtube.com/embed/V8-s6kP_Y5Q?autoplay=1&mute=1&loop=1&playlist=V8-s6kP_Y5Q&controls=1&modestbranding=1";
   const carouselRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [inView, setInView] = useState(false);
+  const [pauseTimeout, setPauseTimeout] = useState<NodeJS.Timeout | null>(null);
   const itemsCount = 3;
+  const AUTO_SCROLL_INTERVAL = 5000; // Auto-scroll interval in ms
+  const PAUSE_AFTER_CLICK = 5000;
 
-  // Handle scroll to update active index
+  // Update activeIndex on manual scroll
   const onScroll = () => {
     if (!carouselRef.current) return;
     const scrollLeft = carouselRef.current.scrollLeft;
@@ -31,6 +35,7 @@ const Work = () => {
     if (newIndex !== activeIndex) setActiveIndex(newIndex);
   };
 
+  // Add scroll listener
   useEffect(() => {
     const carousel = carouselRef.current;
     if (!carousel) return;
@@ -38,16 +43,58 @@ const Work = () => {
     return () => carousel.removeEventListener('scroll', onScroll);
   }, [activeIndex]);
 
+  // IntersectionObserver to detect when carousel enters viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.5 }
+    );
+    if (carouselRef.current) observer.observe(carouselRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Auto-scroll when in view
+  useEffect(() => {
+    if (!inView) return;
+
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    const interval = setInterval(() => {
+      if (pauseTimeout) return; // skip auto-scroll while paused
+
+      let nextIndex = activeIndex + 1;
+      if (nextIndex >= itemsCount) {
+        nextIndex = 0; // loop back to start
+      }
+
+      scrollToIndex(nextIndex);
+      setActiveIndex(nextIndex);
+    }, AUTO_SCROLL_INTERVAL);
+
+    return () => clearInterval(interval);
+  }, [inView, activeIndex, pauseTimeout]);
+
+  // Scroll to a specific index
   const scrollToIndex = (index: number) => {
     if (!carouselRef.current) return;
     const itemWidth = carouselRef.current.offsetWidth;
     carouselRef.current.scrollTo({ left: itemWidth * index, behavior: 'smooth' });
   };
 
+  // Handle manual arrow click
   const handleWorkArrowScroll = (dir: number) => {
     let newIndex = activeIndex + dir;
-    newIndex = Math.max(0, Math.min(newIndex, itemsCount - 1));
+    if (newIndex < 0) newIndex = 0;
+    if (newIndex >= itemsCount) newIndex = itemsCount - 1;
+
     scrollToIndex(newIndex);
+    setActiveIndex(newIndex);
+
+    // Pause auto-scroll for specified duration
+    if (pauseTimeout) clearTimeout(pauseTimeout);
+    const timeout = setTimeout(() => setPauseTimeout(null), PAUSE_AFTER_CLICK);
+    setPauseTimeout(timeout);
   };
 
   return (
