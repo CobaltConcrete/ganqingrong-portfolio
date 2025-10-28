@@ -17,6 +17,8 @@ import ByeBike0 from '../../assets/Projects/ByeBike0.png';
 import ByeBike1 from '../../assets/Projects/ByeBike1.png';
 import ByeBikeArchitecture from '../../assets/Projects/ByeBikeArchitecture.jpg';
 import ByeBikePoster from '../../assets/Projects/ByeBike_poster.pdf';
+import BreakFree0 from '../../assets/Projects/BreakFree0.jpg';
+import BreakFree1 from '../../assets/Projects/BreakFree1.png';
 import BerthingBridgePaper from '../../assets/Projects/BerthingBridge_paper.pdf';
 import eCycle0 from '../../assets/Projects/eCycle0.png';
 import eCycle1 from '../../assets/Projects/eCycle1.png';
@@ -168,8 +170,30 @@ const Project = () => {
           </a>
         </div>
       </div>
-      
+
       <div className={`${styles.project} ${styles['project-right']}`}>
+        <div className={styles['project__image-container']}>
+          <div className={styles['project__image-placeholder']}>
+            <ImageCarousel
+              name="Break Free"
+              images={[{ src: BreakFree0 }, { src: BreakFree1 }]}
+              autoplayOnView={true}
+              autoScrollInterval={3500}
+            />
+          </div>
+        </div>
+
+        <div className={styles['project__info']}>
+          <h3 className={styles['project__title']}>Break Free</h3>
+          <h4 className={styles['project__subtitle']}>Walkway & Cycling Path Safety Surveillance</h4>
+          <p className={styles['project__description']} style={{ textAlign: 'justify' }}>
+            Break Free is a full-stack web application designed to help users break free from addictions like alcohol, smoking, and drugs, while facilitating secure online payments through Interledger. The platform monitors user progress and incentivizes healthy choices by providing vouchers for wellness activities. Developed using Vercel, Supabase, and the Interledger API.
+          </p>
+        </div>
+      </div>
+
+      
+      <div className={`${styles.project} ${styles['project-left']}`}>
         <div className={styles['project__image-container']}>
           <div className={styles['project__image-placeholder']}>
             <ImageCarousel
@@ -193,7 +217,7 @@ const Project = () => {
         </div>
       </div>
 
-      <div className={`${styles.project} ${styles['project-left']}`}>
+      <div className={`${styles.project} ${styles['project-right']}`}>
         <div className={styles['project__image-container']}>
           <div className={styles['project__image-placeholder']}>
             <ImageCarousel
@@ -214,7 +238,7 @@ const Project = () => {
         </div>
       </div>
 
-      <div className={`${styles.project} ${styles['project-right']}`}>
+      <div className={`${styles.project} ${styles['project-left']}`}>
         <div className={styles['project__image-container']}>
           <div className={styles['project__image-placeholder']}>
             <ImageCarousel
@@ -230,17 +254,10 @@ const Project = () => {
           <p className={styles['project__description']}>
             Telegram bot that matches users with compatible food buddies based on shared cuisine preferences and social compatibility, including age and gender preferences. Built with Flask, FastAPI, and PostgreSQL.
           </p>
-
-          {/* <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Live app</div>
-          </a>
-          <a href="https://github.com/bscottnz/life-invader-frontend" target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Learn more</div>
-          </a> */}
         </div>
       </div>
 
-      <div className={`${styles.project} ${styles['project-left']}`}>
+      <div className={`${styles.project} ${styles['project-right']}`}>
         <div className={styles['project__image-container']}>
           <div className={styles['project__image-placeholder']}>
             <ImageCarousel
