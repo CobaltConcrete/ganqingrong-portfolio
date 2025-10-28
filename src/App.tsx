@@ -28,7 +28,7 @@ const App: React.FC = () => {
               <Project />
               <Contact />
               <Footer />
-              <CS180Project0 />
+              {/* <CS180Project0 /> */}
             </>
           }
         />

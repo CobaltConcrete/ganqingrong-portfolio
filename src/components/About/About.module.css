@@ -21,17 +21,40 @@
 }
 
 .profile__image {
-  width: 160px;       /* adjust size as needed */
+  width: 160px;
   height: 160px;
-  border-radius: 50%; /* makes it a circle */
-  object-fit: cover;  /* ensures image fills circle without distortion */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* optional */
+  border-radius: 50%;
+  object-fit: cover;
+  padding: 4px;
+  background: linear-gradient(135deg, #4a9ae3, #9f6f9b);
+  transition: 
+    transform 0.35s ease, 
+    background 0.35s ease-in-out, 
+    box-shadow 0.35s ease-in-out;
 }
 
+.profile__image:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(135deg, #51a2e9, #a878a2);
+  box-shadow: 0 0 20px rgba(81, 162, 233, 0.6);
+}
 
 .profile__blurb {
   font-size: 1.1rem;
   line-height: 1.8;
   opacity: 0.9;
-  flex: 1; /* take remaining space */
+  flex: 1;
+}
+
+.profile__cta {
+  background: linear-gradient(135deg, #51a2e9, #a878a2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.profile__cta:hover {
+  opacity: 0.8;
 }
