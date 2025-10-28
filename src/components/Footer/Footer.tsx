@@ -1,9 +1,9 @@
-
+import styles from './Footer.module.css';
 
 const Footer = () => {
     
     return (
-        <footer className="footer">
+        <footer className={styles.footer}>
             <a href="#hero">
                 <div className="return-home">
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24">
@@ -11,14 +11,25 @@ const Footer = () => {
                     </svg>
                 </div>
             </a>
-            <div className="socials">
-                <a href="https://github.com/CobaltConcrete" target="_blank" rel="noopener noreferrer">
-                    <div className="socials__github">GitHub</div>
-                </a>
-                <a href="mailto:ganqingrong55@gmail.com" target="_blank" rel="noopener noreferrer">
-                    <div className="socials__email">Email</div>
-                </a>
+            <div className={styles.socials}>
+            <a 
+                href="https://github.com/CobaltConcrete" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{ textDecoration: 'none' }}
+            >
+                <div className="socials__github">GitHub</div>
+            </a>
+            <a 
+                href="mailto:ganqingrong55@gmail.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{ textDecoration: 'none' }}
+            >
+                <div className="socials__email">Email</div>
+            </a>
             </div>
+
             <p className="copyright">QING RONG ©2025</p>
         </footer>
     );
