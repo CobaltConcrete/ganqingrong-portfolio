@@ -6,7 +6,6 @@ import Pantheon0 from '../../assets/Projects/Pantheon0.png';
 import Pantheon1 from '../../assets/Projects/Pantheon1.png';
 import Pantheon2 from '../../assets/Projects/Pantheon2.png';
 import Pantheon3 from '../../assets/Projects/Pantheon3.png';
-// import PantheonVideo from '../../assets/Projects/PantheonVideo.mp4';
 import HACX0 from '../../assets/Projects/HACX0.jpg';
 import HACX1 from '../../assets/Projects/HACX1.jpg';
 import HACX2 from '../../assets/Projects/HACX2.jpg';
