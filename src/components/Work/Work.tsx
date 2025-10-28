@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import ImageCarousel from '../ImageCarousel/ImageCarousel.tsx';
 import DSOlogo from '../../assets/Work/DSOlogo.png';
 import DSO0 from '../../assets/Work/DSO0.png';
+import DSOReport from '../../assets/Work/DSOReport.pdf';
 import ASTARlogo from '../../assets/Work/ASTARlogo.png';
 import ASTAR0 from '../../assets/Work/ASTAR0.jpg';
 import ASTAR1 from '../../assets/Work/ASTAR1.jpg';
@@ -74,7 +75,19 @@ const Work = () => {
                 {/* A: Company Info */}
                 <div className={styles.work__box} style={{ gridArea: 'company', display: 'grid', gridTemplateColumns: '1fr 100px', alignItems: 'start', gap: '1rem' }}>
                   <div>
-                    <h3 className="text-lg font-bold" style={{ color: '#60a5fa' }}>DSO National Laboratories</h3>
+                    <a
+                      href={DSOwebsite}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <h3
+                        className="text-lg font-bold cursor-pointer"
+                        style={{ color: '#60a5fa', textDecoration: 'none' }}
+                      >
+                        DSO National Laboratories
+                      </h3>
+                    </a>
                     <h4 className="text-sm font-medium" style={{ color: '#ffffff' }}>AI Research Intern</h4>
                     <p className="text-xs" style={{ color: '#9ca3af' }}>May 2025 – Aug 2025</p>
                   </div>
@@ -100,21 +113,14 @@ const Work = () => {
 
                 {/* B: Skills */}
                 <div className={styles.work__box} style={{ gridArea: 'skills' }}>
-                  <div className="font-bold underline mb-2" style={{ color: '#7dd3fc' }}>Skills</div>
-                  <div className="flex flex-wrap gap-2">
-                    {['LLMs', 'Prompt Engineering', 'System 2 Reasoning', 'Fact Correction', 'Python'].map((skill) => (
-                      <span
-                        key={skill}
-                        className="text-xs px-3 py-1 rounded-full bg-sky-800 text-white"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="bg-red-500 text-white font-bold text-xl p-4 rounded">
-                    If you can see red background, Tailwind is working.
-                  </div>
+                  <div className="font-bold underline mb-1" style={{ color: '#7dd3fc' }}>Skills</div>
+                  <ul className="list-disc list-inside text-sm space-y-1" style={{ color: '#ffffff' }}>
+                    <li>LLMs</li>
+                    <li>Prompt Engineering</li>
+                    <li>System 2 Reasoning</li>
+                    <li>Fact Correction</li>
+                    <li>Python</li>
+                  </ul>
                 </div>
 
                 {/* C: Placeholder Image */}
@@ -124,7 +130,7 @@ const Work = () => {
                 >
                   <ImageCarousel
                     name="ASTAR"
-                    images={[DSO0]}
+                    images={[{src: DSO0, href: DSOReport}]}
                   />
                 </div>
 
@@ -147,7 +153,19 @@ const Work = () => {
                 <div className={styles.work__box} style={{ gridArea: 'company', display: 'grid', gridTemplateColumns: '1fr 100px', alignItems: 'start', gap: '1rem' }}>
 
                   <div>
-                    <h3 className="text-lg font-bold" style={{ color: '#60a5fa' }}>NTU–A*STAR Research</h3>
+                    <a
+                      href={ASTARwebsite}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <h3
+                        className="text-lg font-bold cursor-pointer"
+                        style={{ color: '#60a5fa', textDecoration: 'none' }}
+                      >
+                        NTU–A*STAR Research
+                      </h3>
+                    </a>
                     <h4 className="text-sm font-medium" style={{ color: '#ffffff' }}>3D Gen Intern</h4>
                     <p className="text-xs" style={{ color: '#9ca3af' }}>May 2024 – Jul 2024</p>
                   </div>
@@ -209,7 +227,19 @@ const Work = () => {
 
                 <div className={styles.work__box} style={{ gridArea: 'company', display: 'grid', gridTemplateColumns: '1fr 100px', alignItems: 'start', gap: '1rem' }}>
                   <div>
-                    <h3 className="text-lg font-bold" style={{ color: '#60a5fa' }}>DSTA</h3>
+                    <a
+                      href={DSTAwebsite}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <h3
+                        className="text-lg font-bold cursor-pointer"
+                        style={{ color: '#60a5fa', textDecoration: 'none' }}
+                      >
+                        DSTA
+                      </h3>
+                    </a>
                     <h4 className="text-sm font-medium" style={{ color: '#ffffff' }}>Software Intern, Computer Vision</h4>
                     <p className="text-xs" style={{ color: '#9ca3af' }}>May 2023 – Jul 2023</p>
                   </div>
