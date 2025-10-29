@@ -44,11 +44,10 @@
   border-radius: 50%;
   border: 0px solid #51a2e9;
   background: linear-gradient(135deg, #51a2e9, #a878a2);
-  
-  display: flex;
+  display: grid;
+  place-items: center;
   align-items: center;
   justify-content: center;
-  
   cursor: pointer;
   transition: transform 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
 }
@@ -61,10 +60,10 @@
 }
 
 .socialBtn img {
-  width: 45px;
-  height: 45px;
+  width: 95%;
+  height: 95%;
+  display: block;
   object-fit: contain;
-  
 }
 
 .copyright {
