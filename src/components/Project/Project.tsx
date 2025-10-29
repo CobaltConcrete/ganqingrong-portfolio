@@ -19,6 +19,10 @@ import ByeBikePoster from '../../assets/Projects/ByeBike_poster.pdf';
 import BreakFree0 from '../../assets/Projects/BreakFree0.jpg';
 import BreakFree1 from '../../assets/Projects/BreakFree1.png';
 import BerthingBridgePaper from '../../assets/Projects/BerthingBridge_paper.pdf';
+import NightingAIe0 from '../../assets/Projects/NightingAIe0.png';
+import NightingAIe1 from '../../assets/Projects/NightingAIe1.png';
+import NightingAIe2 from '../../assets/Projects/NightingAIe2.png';
+import NightingAIe3 from '../../assets/Projects/NightingAIe3.png';
 import eCycle0 from '../../assets/Projects/eCycle0.png';
 import eCycle1 from '../../assets/Projects/eCycle1.png';
 import eCycle2 from '../../assets/Projects/eCycle2.png';
@@ -35,12 +39,13 @@ import styles from './Project.module.css';
 const Project = () => {
   const BerthingBridgeVideo = "https://www.youtube.com/embed/S7lvtBrAsu4?autoplay=1&mute=1&loop=1&playlist=S7lvtBrAsu4&controls=1&modestbranding=1";
   const eCycleVideo = "https://www.youtube.com/embed/ZFQg8qSyFPw?autoplay=1&mute=1&loop=1&playlist=ZFQg8qSyFPw&controls=1&modestbranding=1";
-  const eCycleWebsite = "https://ecycle-1.onrender.com/"
+  const eCycleWebsite = "https://ecycle-1.onrender.com/";
+  const NightingAIeVideo = "https://www.youtube.com/embed/lXCTaN2MdRk?autoplay=1&mute=1&loop=1&playlist=lXCTaN2MdRk&controls=1&modestbranding=1";
   const PantheonGame = "https://thortol.itch.io/pantheon";
   const PantheonVideo = "https://www.youtube.com/embed/5Q-6Qt7IhZQ?autoplay=1&mute=1&loop=1&playlist=5Q-6Qt7IhZQ&controls=1&modestbranding=1";
   const TOSSVideo = "https://www.youtube.com/embed/nAbwYBqBZuU?autoplay=1&mute=1&loop=1&playlist=nAbwYBqBZuU&controls=1&modestbranding=1";
   const OSPSTelebot = "https://t.me/OweSPayS_bot"
-  
+
   const projectItemVideoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -69,215 +74,193 @@ const Project = () => {
     };
   }, []);
 
+  type CarouselMedia = { src: string; href?: string };
+  type Project = {
+    name: string;
+    subtitle: string;
+    description: string;
+    images: CarouselMedia[];
+    links?: { label: string; href: string }[];
+  };
+
+  const projects: Project[] = [
+    {
+      name: "eCycle",
+      subtitle: "E-Waste Disposal & Community Platform",
+      description:
+        "Web app to locate nearby e-waste disposal, recycling, and repair facilities. Includes a community forum for users to post questions, share pictures, and connect with businesses to confirm accepted items, promoting responsible e-waste management. Built with Flask, PostgreSQL, and Google Maps API.",
+      images: [
+        { src: eCycle0, href: eCycleWebsite },
+        { src: eCycle1, href: eCycleWebsite },
+        { src: eCycle2, href: eCycleWebsite },
+        { src: eCycle3, href: eCycleWebsite },
+        { src: eCycle4, href: eCycleWebsite },
+        { src: eCycleVideo },
+      ],
+      links: [
+        { label: "Live app", href: eCycleWebsite },
+        { label: "Demo", href: eCycleVideo },
+      ],
+    },
+    {
+      name: "TOSS",
+      subtitle: "Tracking Oriented Semantic Segmentation",
+      description:
+        "Combines object tracking (YOLOv11) with semantic segmentation models (DeepLabv3+, MobileNetv3) to enhance video analysis accuracy. Built using OpenCV and MMsegmentation for advanced video analysis",
+      images: [
+        { src: TOSS0, href: TOSSPoster },
+        { src: TOSSVideo },
+      ],
+      links: [
+        { label: "Demo", href: TOSSVideo },
+        { label: "Poster", href: TOSSPoster },
+        { label: "Paper", href: TOSSPaper },
+      ],
+    },
+    {
+      name: "Berthing Bridge",
+      subtitle: "Automated Ship Berthing System",
+      description:
+        "Utilizes computer vision with YOLOX alongside Arduino ultrasonic sensors to accurately detect embarkation points and measure distances, streamlining and accelerating the ship berthing process with replica model. Built with OpenCV, YOLOX, Arduino, and 3D Printing.",
+      images: [
+        { src: HACX0, href: BerthingBridgeVideo },
+        { src: HACX1, href: BerthingBridgeVideo },
+        { src: HACX2, href: BerthingBridgeVideo },
+        { src: BerthingBridgeVideo },
+      ],
+      links: [
+        { label: "Demo", href: BerthingBridgeVideo },
+        { label: "Paper", href: BerthingBridgePaper },
+      ],
+    },
+    {
+      name: "ByeBike",
+      subtitle: "Walkway-Cycling Path Safety Surveillance",
+      description:
+        "Uses YOLOX to detect cyclists encroaching on pedestrian walkways and sends real-time alerts to both pedestrians and cyclists for safety. Built with OpenCV, YOLOX, and a polygon-based zone tracking pipeline.",
+      images: [
+        { src: ByeBike0, href: ByeBikePoster },
+        { src: ByeBike1, href: ByeBikePoster },
+        { src: ByeBikeArchitecture, href: ByeBikePoster },
+      ],
+      links: [{ label: "Poster", href: ByeBikePoster }],
+    },
+      {
+      name: "Break Free",
+      subtitle: "Walkway & Cycling Path Safety Surveillance",
+      description:
+        "Break Free is a full-stack web application designed to help users break free from addictions like alcohol, smoking, and drugs, while facilitating secure online payments through Interledger. The platform monitors user progress and incentivizes healthy choices by providing vouchers for wellness activities. Developed using Vercel, Supabase, and the Interledger API.",
+      images: [
+        { src: BreakFree0 },
+        { src: BreakFree1 },
+      ],
+    },
+    {
+      name: "NightingAIe",
+      subtitle: "Medical Document Translation for Elderly",
+      description:
+        "NightingAIe is a tool designed to translate complex medical documents into simpler, easy-to-understand dialects for elderly users with language comprehension challenges. It combines OCR for document reading, advanced translation APIs, and text-to-speech technology to deliver accessible medical content alongside doctor's consultation in both text and audio formats.",
+      images: [
+        { src: NightingAIe0, href: NightingAIeVideo },
+        { src: NightingAIeVideo },
+        { src: NightingAIe1, href: NightingAIeVideo },
+        { src: NightingAIe2, href: NightingAIeVideo },
+        { src: NightingAIe3, href: NightingAIeVideo },
+      ],
+      links: [{ label: "Demo", href: NightingAIeVideo }],
+    },
+    {
+      name: "Pantheon",
+      subtitle: "AI-Powered Dungeon Crawler Game",
+      description:
+        "Top-down shooter dungeon crawler allowing players to spawn custom weapons, items, and status buffs using large language models. Built with Unity, OpenAPI, and FastAPI.",
+      images: [
+        { src: Pantheon0, href: PantheonVideo },
+        { src: PantheonVideo },
+        { src: Pantheon1, href: PantheonVideo },
+        { src: Pantheon2, href: PantheonVideo },
+        { src: Pantheon3, href: PantheonVideo },
+      ],
+      links: [
+        { label: "Play", href: PantheonGame },
+        { label: "Demo", href: PantheonVideo },
+      ],
+    },
+    {
+      name: "O$P$",
+      subtitle: "Social Debt Tracker",
+      description:
+        "Telegram bot designed to simplify shared expenses and debt reminders among friends. Handles expense logging, balance reconciliation, and automated settlement nudges with smart notifications. Built using Supabase for persistent data storage, Python, and Telegram Bot API. Deployed on Heroku with lightweight serverless logic for reliability and low cost.",
+      images: [
+        { src: OSPS0, href: OSPSTelebot },
+        { src: OSPS1, href: OSPSTelebot },
+        { src: OSPS2, href: OSPSTelebot },
+      ],
+      links: [{ label: "Try it!", href: "https://t.me/OweSPayS_bot" }],
+    },
+    {
+      name: "EatSee",
+      subtitle: "Food & Social Matching Platform",
+      description:
+        "Telegram bot that matches users with compatible food buddies based on shared cuisine preferences and social compatibility, including age and gender preferences. Built with Flask, FastAPI, and PostgreSQL.",
+      images: [
+        { src: Eatsee0 },
+        { src: Eatsee1 },
+      ],
+    },
+    {
+      name: "RealAnot",
+      subtitle: "AI-Powered Social Media Analyzer Bot",
+      description:
+        "Telegram bot that analyzes photos, text, and links from platforms like YouTube, Instagram, and news sites. Integrates web scraping, search, and AI vision/audio models to deliver rich content insights. Built with Python, Telegram Bot API, EnsembleData, ExaAI, Groq, llama-3.2, and Whisper.",
+      images: [
+        { src: RealAnot0 },
+        { src: RealAnot1 },
+      ],
+    },
+    // Add Projects here
+  ];
+
   return (
+
     <section className={styles.projects} id="projects">
       <h2 className={`${styles['projects__heading']} section-heading`}>Projects</h2>
 
+      {projects.map((project, idx) => (
+        <div
+          key={project.name}
+          className={`${styles.project} ${
+            idx % 2 === 0 ? styles['project-left'] : styles['project-right']
+          }`}
+        >
+          <div className={styles['project__image-container']}>
+            <div className={styles['project__image-placeholder']}>
+              <ImageCarousel
+                name={project.name}
+                images={project.images}
+                autoplayOnView={true}
+                autoScrollInterval={3500}
+              />
+            </div>
+          </div>
 
-      <div className={`${styles.project} ${styles['project-right']}`}>
-        <div className={styles['project__image-container']}>
-          <div className={styles['project__image-placeholder']}>
-            <ImageCarousel
-              name="ECYCLE"
-              images={[{ src: eCycle0, href: eCycleWebsite }, { src: eCycle1, href: eCycleWebsite }, { src: eCycle2, href: eCycleWebsite }, { src: eCycle3, href: eCycleWebsite }, { src: eCycle4, href: eCycleWebsite }, { src: eCycleVideo } ]}
-            />
+          <div className={styles['project__info']}>
+            <h3 className={styles['project__title']}>{project.name}</h3>
+            <h4 className={styles['project__subtitle']}>{project.subtitle}</h4>
+            <p className={styles['project__description']} style={{ textAlign: "justify" }}>
+              {project.description}
+            </p>
+
+            {project.links?.map((link) => (
+              <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">
+                <div className={styles['project__live-2']}>{link.label}</div>
+              </a>
+            ))}
           </div>
         </div>
-        <div className={styles['project__info']}>
-          <h3 className={styles['project__title']}>eCycle</h3>
-          <h4 className={styles['project__subtitle']}>E-Waste Disposal & Community Platform</h4>
-          <p className={styles['project__description']}>
-            Web app to locate nearby e-waste disposal, recycling, and repair facilities. Includes a community forum for users to post questions, share pictures, and connect with businesses to confirm accepted items, promoting responsible e-waste management. Built with Flask, PostgreSQL, and Google Maps API.
-          </p>
-          <a href={eCycleWebsite} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Live app</div>
-          </a>
-          <a href={eCycleVideo} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Demo</div>
-          </a>
-        </div>
-      </div>
-
-      <div className={`${styles.project} ${styles['project-left']}`}>
-        <div className={styles['project__image-container']}>
-          <div className={styles['project__image-placeholder']}>
-            <ImageCarousel
-              name="TOSS"
-              images={[{ src: TOSS0, href: TOSSPoster }, { src: TOSSVideo }]}
-            />
-          </div>
-        </div>
-        <div className={styles['project__info']}>
-          <h3 className={styles['project__title']}>TOSS</h3>
-          <h4 className={styles['project__subtitle']}>Tracking Oriented Semantic Segmentation</h4>
-          <p className={styles['project__description']}>
-            Combines object tracking (YOLOv11) with semantic segmentation models (DeepLabv3+, MobileNetv3) to enhance video analysis accuracy. Built using OpenCV and MMsegmentation for advanced video analysis
-          </p>
-          <a href={TOSSVideo} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Demo</div>
-          </a>
-          <a href={TOSSPoster} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Poster</div>
-          </a>
-          <a href={TOSSPaper} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Paper</div>
-          </a>
-        </div>
-      </div>
-
-      <div className={`${styles.project} ${styles['project-right']}`}>
-        <div className={styles['project__image-container']}>
-          <div className={styles['project__image-placeholder']}>
-            <ImageCarousel
-              name="HACX"
-              images={[{ src: HACX0, href: BerthingBridgeVideo }, { src: HACX1, href: BerthingBridgeVideo }, { src: HACX2, href: BerthingBridgeVideo }, { src: BerthingBridgeVideo }]}
-            />
-          </div>
-        </div>
-        <div className={styles['project__info']}>
-          <h3 className={styles['project__title']}>Berthing Bridge</h3>
-          <h4 className={styles['project__subtitle']}>Automated Ship Berthing System</h4>
-          <p className={styles['project__description']}>
-            Utilizes computer vision with YOLOX alongside Arduino ultrasonic sensors to accurately detect embarkation points and measure distances, streamlining and accelerating the ship berthing process with replica model. Built with OpenCV, YOLOX, Arduino, and 3D Printing.
-          </p>
-          <a href={BerthingBridgeVideo} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Demo</div>
-          </a>
-          <a href={BerthingBridgePaper} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Paper</div>
-          </a>
-        </div>
-      </div>
-
-      <div className={`${styles.project} ${styles['project-left']}`}>
-        <div className={styles['project__image-container']}>
-          <div className={styles['project__image-placeholder']}>
-            <ImageCarousel
-              name="ByeBike"
-              images={[{ src: ByeBike0, href: ByeBikePoster }, { src: ByeBike1, href: ByeBikePoster }, { src: ByeBikeArchitecture, href: ByeBikePoster }]}
-            />
-          </div>
-        </div>
-        <div className={styles['project__info']}>
-          <h3 className={styles['project__title']}>ByeBike</h3>
-          <h4 className={styles['project__subtitle']}>Walkway-Cycling Path Safety Surveillance</h4>
-          <p className={styles['project__description']}>
-            Uses YOLOX to detect cyclists encroaching on pedestrian walkways and sends real-time alerts to both pedestrians and cyclists for safety. Built with OpenCV, YOLOX, and a polygon-based zone tracking pipeline.
-          </p>
-          <a href={ByeBikePoster} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Poster</div>
-          </a>
-        </div>
-      </div>
-
-      <div className={`${styles.project} ${styles['project-right']}`}>
-        <div className={styles['project__image-container']}>
-          <div className={styles['project__image-placeholder']}>
-            <ImageCarousel
-              name="Break Free"
-              images={[{ src: BreakFree0 }, { src: BreakFree1 }]}
-              autoplayOnView={true}
-              autoScrollInterval={3500}
-            />
-          </div>
-        </div>
-
-        <div className={styles['project__info']}>
-          <h3 className={styles['project__title']}>Break Free</h3>
-          <h4 className={styles['project__subtitle']}>Walkway & Cycling Path Safety Surveillance</h4>
-          <p className={styles['project__description']} style={{ textAlign: 'justify' }}>
-            Break Free is a full-stack web application designed to help users break free from addictions like alcohol, smoking, and drugs, while facilitating secure online payments through Interledger. The platform monitors user progress and incentivizes healthy choices by providing vouchers for wellness activities. Developed using Vercel, Supabase, and the Interledger API.
-          </p>
-        </div>
-      </div>
-
-      
-      <div className={`${styles.project} ${styles['project-left']}`}>
-        <div className={styles['project__image-container']}>
-          <div className={styles['project__image-placeholder']}>
-            <ImageCarousel
-              name="Pantheon"
-              images={[{ src: Pantheon0, href: PantheonVideo }, { src: PantheonVideo }, { src: Pantheon1, href: PantheonVideo }, { src: Pantheon2, href: PantheonVideo }, { src: Pantheon3, href: PantheonVideo }]}
-            />
-          </div>
-        </div>
-        <div className={styles['project__info']}>
-          <h3 className={styles['project__title']}>Pantheon</h3>
-          <h4 className={styles['project__subtitle']}>AI-Powered Dungeon Crawler Game</h4>
-          <p className={styles['project__description']}>
-            Top-down shooter dungeon crawler allowing players to spawn custom weapons, items, and status buffs using large language models. Built with Unity, OpenAPI, and FastAPI.
-          </p>
-          <a href={PantheonGame} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Play</div>
-          </a>
-          <a href={PantheonVideo} target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Demo</div>
-          </a>
-        </div>
-      </div>
-
-      <div className={`${styles.project} ${styles['project-right']}`}>
-        <div className={styles['project__image-container']}>
-          <div className={styles['project__image-placeholder']}>
-            <ImageCarousel
-              name="O$P$"
-              images={[{ src: OSPS0, href: OSPSTelebot }, { src: OSPS1, href: OSPSTelebot }, { src: OSPS2, href: OSPSTelebot }]}
-            />
-          </div>
-        </div>
-        <div className={styles['project__info']}>
-          <h3 className={styles['project__title']}>O$P$</h3>
-          <h4 className={styles['project__subtitle']}>Social Debt Tracker</h4>
-          <p className={styles['project__description']}>
-            Telegram bot designed to simplify shared expenses and debt reminders among friends. Handles expense logging, balance reconciliation, and automated settlement nudges with smart notifications. Built using Supabase for persistent data storage, Python, and Telegram Bot API. Deployed on Heroku with lightweight serverless logic for reliability and low cost.
-          </p>
-          <a href="https://t.me/OweSPayS_bot" target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Try it!</div>
-          </a>
-        </div>
-      </div>
-
-      <div className={`${styles.project} ${styles['project-left']}`}>
-        <div className={styles['project__image-container']}>
-          <div className={styles['project__image-placeholder']}>
-            <ImageCarousel
-              name="Eatsee"
-              images={[{ src: Eatsee0 }, {src: Eatsee1 }]}
-            />
-          </div>
-        </div>
-
-        <div className={styles['project__info']}>
-          <h3 className={styles['project__title']}>EatSee</h3>
-          <h4 className={styles['project__subtitle']}>Food & Social Matching Platform</h4>
-          <p className={styles['project__description']}>
-            Telegram bot that matches users with compatible food buddies based on shared cuisine preferences and social compatibility, including age and gender preferences. Built with Flask, FastAPI, and PostgreSQL.
-          </p>
-        </div>
-      </div>
-
-      <div className={`${styles.project} ${styles['project-right']}`}>
-        <div className={styles['project__image-container']}>
-          <div className={styles['project__image-placeholder']}>
-            <ImageCarousel
-              name="RealAnot"
-              images={[{ src: RealAnot0 }, {src: RealAnot1 }]}
-            />
-          </div>
-        </div>
-        <div className={styles['project__info']}>
-          <h3 className={styles['project__title']}>RealAnot</h3>
-          <h4 className={styles['project__subtitle']}>AI-Powered Social Media Analyzer Bot</h4>
-          <p className={styles['project__description']}>
-            Telegram bot that analyzes photos, text, and links from platforms like YouTube, Instagram, and news sites. Integrates web scraping, search, and AI vision/audio models to deliver rich content insights. Built with Python, Telegram Bot API, EnsembleData, ExaAI, Groq, llama-3.2, and Whisper.
-          </p>
-          {/* <a href="https://t.me/DLWqr1bot" target="_blank" rel="noopener noreferrer">
-            <div className={styles['project__live-2']}>Try it!</div>
-          </a> */}
-        </div>
-      </div>
-
+      ))}
     </section>
+
   );
 };
 
