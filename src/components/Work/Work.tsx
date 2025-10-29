@@ -23,8 +23,8 @@ const Work = () => {
   const [inView, setInView] = useState(false);
   const [pauseTimeout, setPauseTimeout] = useState<NodeJS.Timeout | null>(null);
   const itemsCount = 3;
-  const AUTO_SCROLL_INTERVAL = 5000; // Auto-scroll interval in ms
-  const PAUSE_AFTER_CLICK = 5000;
+  const AUTO_SCROLL_INTERVAL = 15000; // Auto-scroll interval in ms
+  const PAUSE_AFTER_CLICK = 15000;
 
   // Update activeIndex on manual scroll
   const onScroll = () => {

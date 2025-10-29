@@ -90,9 +90,9 @@ const Project = () => {
       description:
         "Web app to locate nearby e-waste disposal, recycling, and repair facilities. Includes a community forum for users to post questions, share pictures, and connect with businesses to confirm accepted items, promoting responsible e-waste management. Built with Flask, PostgreSQL, and Google Maps API.",
       images: [
+        { src: eCycle2, href: eCycleWebsite },
         { src: eCycle0, href: eCycleWebsite },
         { src: eCycle1, href: eCycleWebsite },
-        { src: eCycle2, href: eCycleWebsite },
         { src: eCycle3, href: eCycleWebsite },
         { src: eCycle4, href: eCycleWebsite },
         { src: eCycleVideo },
@@ -239,7 +239,7 @@ const Project = () => {
                 name={project.name}
                 images={project.images}
                 autoplayOnView={true}
-                autoScrollInterval={3500}
+                autoScrollInterval={10000}
               />
             </div>
           </div>

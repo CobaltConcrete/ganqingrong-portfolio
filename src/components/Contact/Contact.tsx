@@ -23,7 +23,7 @@ const Contact = () => {
       <section className="contact" id="contact">
         <h2 className="contact__heading section-heading">Contact</h2>
         <p className="contact__text">
-          Have a question or want to work together? Leave your details and I'll get back to you as soon as possible.
+          Have a question or want to work together?<br />Leave your details and I'll get back to you as soon as possible.
         </p>
         <form className="contact__form" action="https://formspree.io/f/mldpykzz" method="POST" onSubmit={handleSubmit}>
           <input className="contact__form-name" name="name" placeholder="Name" required />

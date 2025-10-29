@@ -18,7 +18,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
   images,
   name,
   autoplayOnView = false,
-  autoScrollInterval = 5000,
+  autoScrollInterval = 10000,
   pauseAfterClick = 0
 }) => {
   const normalizedImages: CarouselMedia[] = images.map(img =>
