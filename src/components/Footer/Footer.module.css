@@ -42,26 +42,24 @@
   height: 50px;
   padding: 0;
   border-radius: 50%;
-  border: 0px solid #51a2e9;
-  background: linear-gradient(135deg, #51a2e9, #a878a2);
   display: grid;
   place-items: center;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease;
+  /* will-change: transform;
+  transform: translateZ(0); */
 }
 
 .socialBtn:hover {
   transform: translateY(-3px);
-  border-color: #a878a2;
-  opacity: 0.9;
   box-shadow: 0 0 10px rgba(81, 162, 233, 0.6);
 }
 
 .socialBtn img {
-  width: 95%;
-  height: 95%;
+  width: 100%;
+  height: 100%;
   display: block;
   object-fit: contain;
 }
