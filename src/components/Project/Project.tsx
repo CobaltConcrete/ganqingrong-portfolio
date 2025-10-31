@@ -14,7 +14,7 @@ import TOSSPaper from '../../assets/Projects/TOSS_paper.pdf';
 import TOSSPoster from '../../assets/Projects/TOSS_poster.pdf';
 import ByeBike0 from '../../assets/Projects/ByeBike0.png';
 import ByeBike1 from '../../assets/Projects/ByeBike1.png';
-import ByeBikeArchitecture from '../../assets/Projects/ByeBikeArchitecture.jpg';
+import ByeBikeArchitecture from '../../assets/Projects/ByeBikeArchitecture.png';
 import ByeBikePoster from '../../assets/Projects/ByeBike_poster.pdf';
 import BreakFree0 from '../../assets/Projects/BreakFree0.jpg';
 import BreakFree1 from '../../assets/Projects/BreakFree1.png';
