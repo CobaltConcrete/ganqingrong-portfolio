@@ -1,7 +1,6 @@
 import styles from './About.module.css';
 import ProfilePicture from '../../assets/icons/ProfilePicture.jpg';
-import ResumePDF from "../../assets/Work/ResumeSWE2026.pdf";
-
+// import ResumePDF from "../../assets/Work/ResumeSWE2026.pdf";
 
 const About = () => {
   return (
@@ -11,7 +10,7 @@ const About = () => {
       {/* Picture + Description */}
       <div className={styles.about__intro}>
         <div className={`${styles.profile} ${styles.profile__fade_in}`}>
-          <a href={ResumePDF} target="_blank" rel="noopener noreferrer">
+          <a href="/resume.html" target="_blank" rel="noopener noreferrer">
             <img
               src={ProfilePicture}
               alt="Profile"
@@ -29,7 +28,7 @@ const About = () => {
             developing side games, and staying curious about how emerging
             technologies can shape the future.{' '}
               <a
-                href={ResumePDF}
+                href="/resume.html"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.profile__cta}

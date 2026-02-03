@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gan Qing Rong - Resume</title>
+    <style>
+    @page {
+        size: A4;
+        margin: 15mm;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 10pt;
+        color: #000;
+        background: #eee;          /* grey around the page (screen only) */
+        margin: 0;
+    }
+
+    .page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 20px auto;         /* center on screen */
+        padding: 20mm;
+        background: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.15);
+        box-sizing: border-box;
+        line-height: 1.5;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 14pt;
+        margin-bottom: 4px;
+    }
+
+    .contact {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 10pt;
+    }
+
+    h2 {
+        font-size: 12pt;
+        margin-top: 28px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 4px;
+        cursor: pointer;
+    }
+
+    h3 {
+        font-size: 10pt;
+        margin: 10px 0 2px 0;
+    }
+
+    .sub {
+        font-style: italic;
+        margin-bottom: 10px;
+    }
+
+    .date {
+        float: right;
+        font-weight: normal;
+    }
+
+    ul {
+        margin: 6px 0 12px 0;     /* remove left margin */
+        font-size: 10pt;
+        padding-left: 16px;       /* small indent for bullets */
+        list-style-position: outside;
+    }
+
+    li {
+        margin-bottom: 6px;
+    }
+
+    a {
+        color: #0563C1;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .tech {
+        font-weight: bold;
+    }
+
+    /* Print mode */
+    @media print {
+        body {
+        background: white;
+        }
+        .page {
+        box-shadow: none;
+        margin: 0;
+        width: auto;
+        min-height: auto;
+        padding: 0;
+        }
+    }
+    </style>
+</head>
+<script>
+  function copyText(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      console.log("Copied:", text);
+    }).catch(err => {
+      console.error("Copy failed", err);
+    });
+  }
+
+  function copyList(listId) {
+    const items = document.querySelectorAll(`#${listId} li`);
+    let text = "";
+    items.forEach(li => {
+      text += "• " + li.innerText.trim() + "\n";
+    });
+    copyText(text.trim());
+  }
+
+  function copyCategory(h2Element) {
+    let text = h2Element.innerText.trim() + "\n\n";
+    let currentElement = h2Element.nextElementSibling;
+    
+    while (currentElement && currentElement.tagName !== 'H2') {
+      if (currentElement.tagName === 'H3') {
+        text += currentElement.innerText.trim() + "\n";
+      } else if (currentElement.classList && currentElement.classList.contains('sub')) {
+        text += currentElement.innerText.trim() + "\n";
+      } else if (currentElement.tagName === 'UL') {
+        const items = currentElement.querySelectorAll('li');
+        items.forEach(li => {
+          text += "• " + li.innerText.trim() + "\n";
+        });
+      } else if (currentElement.tagName === 'DIV' && !currentElement.classList.contains('sub')) {
+        text += currentElement.innerText.trim() + "\n";
+      }
+      currentElement = currentElement.nextElementSibling;
+    }
+    
+    copyText(text.trim());
+  }
+</script>
+<body>
+    <div class="page">
+
+        <h1>GAN QING RONG</h1>
+        <div class="contact">
+            Mobile: +1 (341) 666-2067 • 
+            Email: <a href="mailto:ganqingrong55@gmail.com">ganqingrong55@gmail.com</a> •
+            Website: <a href="https://ganqingrong.com/">ganqingrong.com</a>
+        </div>
+
+        <h2 onclick="copyCategory(this)">EDUCATION</h2>
+
+        <h3>
+        <span onclick="copyText('Nanyang Technological University, Singapore')" style="cursor:pointer;">
+            Nanyang Technological University, Singapore
+        </span>
+        <span class="date">Aug 2023 – Apr 2027</span>
+        </h3>
+
+        <div>
+        <span onclick="copyText('Renaissance Engineering Programme')" style="cursor:pointer;">
+            Renaissance Engineering Programme
+        </span>
+        </div>
+
+        <ul id="ntu-edu" onclick="copyList('ntu-edu')" style="cursor:pointer;">
+        <li>Bachelor of Science, Computer Science</li>
+        <li>Minor in Mathematics</li>
+        <li>Master of Science, Technology Management</li>
+        </ul>
+
+
+        <h3>
+        <span onclick="copyText('University of California, Berkeley')" style="cursor:pointer;">
+            University of California, Berkeley
+        </span>
+        <span class="date">Aug 2025 – Apr 2026</span>
+        </h3>
+
+        <div>
+        <span onclick="copyText('GLOBE Exchange Program')" style="cursor:pointer;">
+            GLOBE Exchange Program
+        </span>
+        </div>
+
+        <ul id="berkeley-edu" onclick="copyList('berkeley-edu')" style="cursor:pointer;">
+        <li>Coursework in EECS Department</li>
+        </ul>
+
+        <h2 onclick="copyCategory(this)">SKILLS</h2>
+        <ul>
+
+        <li>
+            <span onclick="copyText('Languages: Python, C++, JavaScript, TypeScript, HTML/CSS, SQL, NoSQL, Java, C, Golang')" style="cursor:pointer;">
+            <strong>Languages:</strong>
+            </span>
+            <span onclick="copyText('Python, C++, JavaScript, TypeScript, HTML/CSS, SQL, NoSQL, Java, C, Golang')" style="cursor:pointer;">
+            Python, C++, JavaScript, TypeScript, HTML/CSS, SQL, NoSQL, Java, C, Golang
+            </span>
+        </li>
+
+        <li>
+            <span onclick="copyText('Frameworks: Node.js, Express, Langchain, React, Next.js, FastAPI, Tailwind, Material-UI')" style="cursor:pointer;">
+            <strong>Frameworks:</strong>
+            </span>
+            <span onclick="copyText('Node.js, Express, Langchain, React, Next.js, FastAPI, Tailwind, Material-UI')" style="cursor:pointer;">
+            Node.js, Express, Langchain, React, Next.js, FastAPI, Tailwind, Material-UI
+            </span>
+        </li>
+
+        <li>
+            <span onclick="copyText('Developer Tools: Firebase, Azure, Docker, Git, GitHub, GitLab, Vercel, Heroku, Render')" style="cursor:pointer;">
+            <strong>Developer Tools:</strong>
+            </span>
+            <span onclick="copyText('Firebase, Azure, Docker, Git, GitHub, GitLab, Vercel, Heroku, Render')" style="cursor:pointer;">
+            Firebase, Azure, Docker, Git, GitHub, GitLab, Vercel, Heroku, Render
+            </span>
+        </li>
+
+        <li>
+            <span onclick="copyText('Libraries: TensorFlow, scikit-learn, pandas, NumPy, Matplotlib, librosa, OpenCV, mmSegmentation')" style="cursor:pointer;">
+            <strong>Libraries:</strong>
+            </span>
+            <span onclick="copyText('TensorFlow, scikit-learn, pandas, NumPy, Matplotlib, librosa, OpenCV, mmSegmentation')" style="cursor:pointer;">
+            TensorFlow, scikit-learn, pandas, NumPy, Matplotlib, librosa, OpenCV, mmSegmentation
+            </span>
+        </li>
+
+        </ul>
+
+        <h2 onclick="copyCategory(this)">WORK EXPERIENCE</h2>
+
+        <h3>
+        <span onclick="copyText('Defence Science & Technology Agency (DSTA)')" style="cursor:pointer;">
+            Defence Science & Technology Agency (DSTA)
+        </span>
+        <span class="date">May 2023 – Jul 2023</span>
+        </h3>
+        <div class="sub">
+        <span onclick="copyText('Software Engineer Intern')" style="cursor:pointer;">
+            Software Engineer Intern
+        </span>
+        </div>
+        <ul id="dsta-list" onclick="copyList('dsta-list')" style="cursor:pointer;">
+        <li>Built and deployed computer-vision surveillance systems for large-scale live events (25,000 pax), integrating person re-ID and face-recognition modules into production testbeds.</li>
+        <li>Integrated person re-identification and face-recognition modules into an end-to-end surveillance pipeline, ensuring system reliability in high-traffic environments.</li>
+        <li>Developed evaluation scripts, telemetry logging, and performance dashboards to benchmark model latency and identification accuracy under real-world constraints.</li>
+        <li>Contributed to the rollout of enhanced surveillance tooling for NDP 2023.</li>
+        </ul>
+
+
+        <h3>
+        <span onclick="copyText('NTU-A*STAR Research')" style="cursor:pointer;">
+            NTU-A*STAR Research
+        </span>
+        <span class="date">May 2024 – Jul 2024</span>
+        </h3>
+        <div class="sub">
+        <span onclick="copyText('Machine Learning Engineer Intern')" style="cursor:pointer;">
+            Machine Learning Engineer Intern
+        </span>
+        </div>
+        <ul id="astar-list" onclick="copyList('astar-list')" style="cursor:pointer;">
+        <li>Engineered scalable 3D generative model pipelines (SDFusion, DreamFusion, Magic3D), handling dataset preprocessing, training orchestration, and model evaluation.</li>
+        <li>Built automated benchmarking tools to compare fidelity, controllability, and generation speed across 3D generation workflows.</li>
+        <li>Developed mesh post-processing utilities and automated export workflows for PLA/resin 3D printing, supporting assets showcased at IEEE Conference 2024.</li>
+        </ul>
+
+
+        <h3>
+        <span onclick="copyText('DSO National Laboratories')" style="cursor:pointer;">
+            DSO National Laboratories
+        </span>
+        <span class="date">May 2025 – Aug 2025</span>
+        </h3>
+        <div class="sub">
+        <span onclick="copyText('Software Engineer Intern')" style="cursor:pointer;">
+            Software Engineer Intern
+        </span>
+        </div>
+        <ul id="dso-list" onclick="copyList('dso-list')" style="cursor:pointer;">
+        <li>Implemented modular reasoning pipelines integrating summarization, salient-fact extraction, and memory-correction components into existing LLM systems.</li>
+        <li>Engineered System-2-style fine-tuning workflows and context-parametric inversion modules, focusing on system reliability and maintainability.</li>
+        <li>Designed and developed tooling to evaluate reasoning correctness, trace model decisions, and improve interpretability in production LLM deployments.</li>
+        <li>Improved stability and factual consistency of LLM outputs through system-level augmentations rather than model-architecture changes.</li>
+        </ul>
+
+
+        <h2 onclick="copyCategory(this)">PROJECTS</h2>
+
+        <h3>
+        <span onclick="copyText('E-Waste Recycling & Community Platform')" style="cursor:pointer;">
+            E-Waste Recycling & Community Platform
+        </span>
+        </h3>
+        <ul id="ecycle-list" onclick="copyList('ecycle-list')" style="cursor:pointer;">
+        <li>Created a web app that helps users locate nearby electronic waste recycling points. Integrated a Reddit-like forum for questions and discussions, with sentiment analysis for harmful content moderation.</li>
+        <li><span class="tech">Technologies:</span> React, Flask, PostgreSQL</li>
+        </ul>
+
+        <h3>
+        <span onclick="copyText('Google AI Hackathon 2024 – 3rd Place')" style="cursor:pointer;">
+            Google AI Hackathon 2024 – 3rd Place
+        </span>
+        </h3>
+        <ul id="googleai-list" onclick="copyList('googleai-list')" style="cursor:pointer;">
+        <li>Designed an image-to-speech translation system that converts medical documents into dialects commonly used by elderly patients, improving accessibility in healthcare.</li>
+        <li><span class="tech">Technologies:</span> Speech-to-text, text-to-speech, dialect translation models</li>
+        </ul>
+
+        <h3>
+        <span onclick="copyText('LTA Hackathon – 3rd Place')" style="cursor:pointer;">
+            LTA Hackathon – 3rd Place
+        </span>
+        </h3>
+        <ul id="lta-list" onclick="copyList('lta-list')" style="cursor:pointer;">
+        <li>Developed a real-time safety alert system to notify both cyclists and pedestrians when bicycles encroach on pedestrian paths, enhancing shared path safety in Singapore.</li>
+        <li><span class="tech">Technologies:</span> YOLOv5, Flask, WebSockets, GPS integration</li>
+        </ul>
+
+        <h3>
+        <span onclick="copyText('HACKX 2024 – 4th Place')" style="cursor:pointer;">
+            HACKX 2024 – 4th Place
+        </span>
+        </h3>
+        <ul id="hackx-list" onclick="copyList('hackx-list')" style="cursor:pointer;">
+        <li>Engineered a smart system to assist with autonomous ship berthing, combining real-time computer vision and hardware control.</li>
+        <li><span class="tech">Technologies:</span> Arduino, YOLOv5, React, Flask, 3D Printing</li>
+        </ul>
+
+
+        <h2 onclick="copyCategory(this)">RESEARCH WORK</h2>
+
+        <h3>
+        <span onclick="copyText('Undergraduate Research Experience on Campus (URECA)')" style="cursor:pointer;">
+            Undergraduate Research Experience on Campus (URECA)
+        </span>
+        <span class="date">Aug 2024 – Dec 2024</span>
+        </h3>
+        <div class="sub">
+        <span onclick="copyText('Research on Real-Time Semantic Segmentation for Autonomous Robots')" style="cursor:pointer;">
+            Research on Real-Time Semantic Segmentation for Autonomous Robots
+        </span>
+        </div>
+        <ul id="ureca-list" onclick="copyList('ureca-list')" style="cursor:pointer;">
+        <li>Developed real-time vision system integrating YOLOv11 tracking with semantic segmentation (DeepLabV3+, MobileNet), improving segmentation accuracy and temporal consistency in dynamic environments.</li>
+        <li>Improved segmentation accuracy and temporal consistency in dynamic environments such as Cityscapes.</li>
+        <li>Achieved strong generalization to unseen datasets (e.g., VSPW) with zero-shot domain transfer capability.</li>
+        <li>Enhanced performance over baseline models without additional fine-tuning on new domains.</li>
+        </ul>
+
+  </div>
+</body>
+</html>
