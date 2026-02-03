@@ -1,6 +1,6 @@
 import styles from './About.module.css';
 import ProfilePicture from '../../assets/icons/ProfilePicture.jpg';
-import ResumeHTML from "../../assets/Work/ResumeSWE2026.html";
+import ResumeHTML from '../../assets/Work/Resume.html';
 
 const About = () => {
   return (
