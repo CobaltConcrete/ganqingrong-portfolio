@@ -1,6 +1,6 @@
 import styles from './About.module.css';
 import ProfilePicture from '../../assets/icons/ProfilePicture.jpg';
-import ResumePDF from "../../assets/Work/GanQingRongResume.pdf";
+import ResumePDF from "../../assets/Work/ResumeSWE2026.pdf";
 
 
 const About = () => {
