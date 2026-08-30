@@ -99,7 +99,17 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
           const isVideo = /\.(mp4|webm|ogg)$/i.test(src);
           const isYouTube = /youtube\.com\/embed\//i.test(src);
 
-          const media = isYouTube ? (
+          // Only mount real media for the active slide and its immediate
+          // neighbors. Every slide stays in the DOM (scroll-snap math needs
+          // a fixed-width item per index) but far-off slides render an
+          // empty placeholder instead of decoding an image/video nobody is
+          // looking at — this is what keeps memory bounded on pages with
+          // many multi-image project carousels.
+          const isNearActive = Math.abs(i - activeIndex) <= 1;
+
+          const media = !isNearActive ? (
+            <div className={styles.imageCarouselImage} aria-hidden="true" />
+          ) : isYouTube ? (
             <iframe
               src={src}
               title={`YouTube ${name} ${i}`}
@@ -114,19 +124,22 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
               src={src}
               controls
               muted
+              preload="none"
               className={styles.imageCarouselImage}
             />
           ) : (
             <img
               src={src}
               alt={`${name} ${i}`}
+              loading="lazy"
+              decoding="async"
               className={styles.imageCarouselImage}
             />
           );
 
           return (
             <div className={styles.imageCarouselItem} key={`${name}-${i}`}>
-              {href && !isYouTube ? (
+              {href && !isYouTube && isNearActive ? (
                 <a
                   href={href}
                   target="_blank"

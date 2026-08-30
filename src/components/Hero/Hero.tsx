@@ -22,7 +22,7 @@ const Hero = () => {
     let isInsideHero = false;
 
     const dots: { x: number; y: number; vx: number; vy: number; color: 'white' | 'blue' }[] = [];
-    const dotsPer10000Px = 1;
+    const dotsPer10000Px = window.innerWidth < 700 ? 0.5 : 1;
 
     const generateDots = () => {
       const area = canvas.width * canvas.height;
@@ -65,9 +65,11 @@ const Hero = () => {
     hero.addEventListener('pointerleave', handleMouseLeave);
     window.addEventListener('resize', resizeCanvas);
 
-    let animationId: number;
+    let animationId: number | null = null;
+    let isRunning = false;
 
     const animate = () => {
+      if (!isRunning) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       const NodesConnected: typeof dots = [];
@@ -133,13 +135,41 @@ const Hero = () => {
       animationId = requestAnimationFrame(animate);
     };
 
-    animate();
+    const start = () => {
+      if (isRunning) return;
+      isRunning = true;
+      animate();
+    };
+
+    const stop = () => {
+      isRunning = false;
+      if (animationId !== null) cancelAnimationFrame(animationId);
+      animationId = null;
+    };
+
+    // Only animate while the hero is actually visible, and pause when the
+    // tab is backgrounded — this canvas loop otherwise runs forever and
+    // competes with scrolling/rendering, which is what causes jank on
+    // lower-end mobile devices.
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => (entry.isIntersecting ? start() : stop()),
+      { threshold: 0 }
+    );
+    visibilityObserver.observe(hero);
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) stop();
+      else if (hero.getBoundingClientRect().bottom > 0) start();
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
       hero.removeEventListener('pointermove', updateMousePosition);
       hero.removeEventListener('pointerleave', handleMouseLeave);
       window.removeEventListener('resize', resizeCanvas);
-      cancelAnimationFrame(animationId);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      visibilityObserver.disconnect();
+      stop();
     };
   }, []);
 

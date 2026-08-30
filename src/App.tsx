@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 
 import Hero from "./components/Hero/Hero";
 import Navigation from "./components/Navigation/Navigation";
-import Background from "./components/Background/Background";
 import About from "./components/About/About";
 import Work from "./components/Work/Work";
 import Project from "./components/Project/Project";
@@ -22,7 +21,6 @@ const App: React.FC = () => {
           element={
             <>
               <Hero />
-              <Background />
               <About />
               <Work />
               <Project />
