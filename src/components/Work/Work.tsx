@@ -10,6 +10,8 @@ import ASTAR2 from '../../assets/Work/ASTAR2.jpg';
 import DSTAlogo from '../../assets/Work/DSTAlogo.jpg';
 import DSTA0 from '../../assets/Work/DSTA0.jpg';
 import DSTA1 from '../../assets/Work/DSTA1.jpg';
+import HTX1 from '../../assets/Work/HTX1.png';
+import HTX4 from '../../assets/Work/HTX4.png';
 import styles from './Work.module.css';
 
 const Work = () => {
@@ -18,11 +20,12 @@ const Work = () => {
   const DSOwebsite = 'https://www.dso.org.sg/';
   const DSTAwebsite = 'https://www.dsta.gov.sg/';
   const DSTAvideo = "https://www.youtube.com/embed/V8-s6kP_Y5Q?autoplay=1&mute=1&loop=1&playlist=V8-s6kP_Y5Q&controls=1&modestbranding=1";
+  const HTXwebsite = 'https://www.htx.gov.sg/';
   const carouselRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [inView, setInView] = useState(false);
   const [pauseTimeout, setPauseTimeout] = useState<NodeJS.Timeout | null>(null);
-  const itemsCount = 3;
+  const itemsCount = 4;
   const AUTO_SCROLL_INTERVAL = 15000; // Auto-scroll interval in ms
   const PAUSE_AFTER_CLICK = 15000;
 
@@ -116,7 +119,66 @@ const Work = () => {
             }}
           >
 
-            {/* Slide 1 – DSO */}
+            {/* Slide 1 – HTX */}
+            <div className={styles.work__item} style={{ flex: '0 0 100%', scrollSnapAlign: 'start' }}>
+              <div className={styles.work__grid}>
+                {/* A: Company Info */}
+                <div className={styles.work__box} style={{ gridArea: 'company', display: 'grid', gridTemplateColumns: '1fr', alignItems: 'start', gap: '1rem' }}>
+                  <div>
+                    <a
+                      href={HTXwebsite}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <h3
+                        className="text-lg font-bold cursor-pointer"
+                        style={{ color: '#60a5fa', textDecoration: 'none' }}
+                      >
+                        HTX
+                      </h3>
+                    </a>
+                    <h4 className="text-sm font-medium" style={{ color: '#ffffff' }}>ML Engineer Intern</h4>
+                    <p className="text-xs" style={{ color: '#9ca3af' }}>May 2026 – Aug 2026</p>
+                  </div>
+                </div>
+
+                {/* B: Skills */}
+                <div className={styles.work__box} style={{ gridArea: 'skills' }}>
+                  <div className="font-bold underline mb-1" style={{ color: '#7dd3fc' }}>Skills</div>
+                  <ul className="list-disc list-inside text-sm space-y-1" style={{ color: '#ffffff' }}>
+                    <li>Generative AI</li>
+                    <li>LHM / FasterLivePortrait</li>
+                    <li>Image Inpainting</li>
+                    <li>GPU Infra (Tailscale)</li>
+                    <li>Python</li>
+                  </ul>
+                </div>
+
+                {/* C: Sub carousel */}
+                <div
+                  className={styles.work__box}
+                  style={{ gridArea: 'image', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                >
+                  <ImageCarousel
+                    name="HTX"
+                    images={[{ src: HTX1 }, { src: HTX4 }]}
+                  />
+                </div>
+
+                {/* D: Accomplishments */}
+                <div className={styles.work__box} style={{ gridArea: 'accomplishments' }}>
+                  <div className="font-bold underline mb-1" style={{ color: '#7dd3fc' }}>Accomplishments</div>
+                  <ul className="list-disc list-inside text-sm space-y-1" style={{ color: '#ffffff' }}>
+                    <li>Built a one-shot human-avatar pipeline connecting LHM, FasterLivePortrait, and Deep-Live-Cam.</li>
+                    <li>Prototyped a day-to-night panorama editing pipeline using Qwen-Image-Edit and FLUX.1 Fill.</li>
+                    <li>Helped configure a shared GPU workstation with remote access and failure diagnostics for four interns.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Slide 2 – DSO */}
             <div className={styles.work__item} style={{ flex: '0 0 100%', scrollSnapAlign: 'start' }}>
               <div className={styles.work__grid}>
                 {/* A: Company Info */}
@@ -193,7 +255,7 @@ const Work = () => {
               </div>
             </div>
 
-            {/* Slide 2 – NTU-A*STAR */}
+            {/* Slide 3 – NTU-A*STAR */}
             <div className={styles.work__item} style={{ flex: '0 0 100%', scrollSnapAlign: 'start' }}>
               <div className={styles.work__grid}>
 
@@ -268,7 +330,7 @@ const Work = () => {
               </div>
             </div>
 
-            {/* Slide 3 – DSTA */}
+            {/* Slide 4 – DSTA */}
             <div className={styles.work__item} style={{ flex: '0 0 100%', scrollSnapAlign: 'start' }}>
               <div className={styles.work__grid}>
 
