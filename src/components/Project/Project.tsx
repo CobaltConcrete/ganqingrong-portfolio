@@ -252,7 +252,15 @@ const Project = () => {
             </p>
 
             {project.links?.map((link) => (
-              <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">
+              <a
+                key={link.href}
+                href={link.href.replace(
+                  /^https:\/\/www\.youtube\.com\/embed\/([^?]+).*$/,
+                  'https://www.youtube.com/watch?v=$1'
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <div className={styles['project__live-2']}>{link.label}</div>
               </a>
             ))}

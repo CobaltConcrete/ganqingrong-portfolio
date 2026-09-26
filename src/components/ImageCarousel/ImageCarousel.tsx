@@ -116,6 +116,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
               frameBorder="0"
               allow="autoplay; encrypted-media; fullscreen"
               allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
               className={styles.imageCarouselImage}
               style={{ borderRadius: '12px' }}
             />
@@ -141,7 +142,10 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
             <div className={styles.imageCarouselItem} key={`${name}-${i}`}>
               {href && !isYouTube && isNearActive ? (
                 <a
-                  href={href}
+                  href={href.replace(
+                    /^https:\/\/www\.youtube\.com\/embed\/([^?]+).*$/,
+                    'https://www.youtube.com/watch?v=$1'
+                  )}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ display: 'block' }}
