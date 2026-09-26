@@ -124,7 +124,7 @@ const Work = () => {
             <div className={styles.work__item} style={{ flex: '0 0 100%', scrollSnapAlign: 'start' }}>
               <div className={styles.work__grid}>
                 {/* A: Company Info */}
-                <div className={styles.work__box} style={{ gridArea: 'company', display: 'grid', gridTemplateColumns: '1fr', alignItems: 'start', gap: '1rem' }}>
+                <div className={styles.work__box} style={{ gridArea: 'company', display: 'grid', gridTemplateColumns: '1fr 100px', alignItems: 'start', gap: '1rem' }}>
                   <div>
                     <a
                       href={HTXwebsite}
@@ -142,19 +142,24 @@ const Work = () => {
                     <h4 className="text-sm font-medium" style={{ color: '#ffffff' }}>ML Engineer Intern</h4>
                     <p className="text-xs" style={{ color: '#9ca3af' }}>May 2026 – Aug 2026</p>
                   </div>
-                  <a
-                    href={HTXwebsite}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ display: 'inline-block', justifySelf: 'start' }}
-                    aria-label="Visit HTX website"
-                  >
-                    <img
-                      src={HTXlogo}
-                      alt="HTX logo"
-                      style={{ width: '100px', height: '100px', objectFit: 'contain' }}
-                    />
-                  </a>
+                  <div>
+                    <a href={HTXwebsite} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block' }} aria-label="Visit HTX website">
+                      <img
+                        src={HTXlogo}
+                        alt="HTX logo"
+                        style={{
+                          width: '100px',
+                          height: '100px',
+                          objectFit: 'contain',
+                          borderRadius: '50%',
+                          marginLeft: '-30%',
+                          marginTop: '10%',
+                          backgroundColor: '#fff',
+                          padding: '8px',
+                        }}
+                      />
+                    </a>
+                  </div>
                 </div>
 
                 {/* B: Skills */}
