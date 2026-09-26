@@ -10,6 +10,7 @@ import ASTAR2 from '../../assets/Work/ASTAR2.jpg';
 import DSTAlogo from '../../assets/Work/DSTAlogo.jpg';
 import DSTA0 from '../../assets/Work/DSTA0.jpg';
 import DSTA1 from '../../assets/Work/DSTA1.jpg';
+import HTXlogo from '../../assets/Work/HTXlogo.png';
 import HTX1 from '../../assets/Work/HTX1.png';
 import HTX4 from '../../assets/Work/HTX4.png';
 import styles from './Work.module.css';
@@ -141,6 +142,19 @@ const Work = () => {
                     <h4 className="text-sm font-medium" style={{ color: '#ffffff' }}>ML Engineer Intern</h4>
                     <p className="text-xs" style={{ color: '#9ca3af' }}>May 2026 – Aug 2026</p>
                   </div>
+                  <a
+                    href={HTXwebsite}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ display: 'inline-block', justifySelf: 'start' }}
+                    aria-label="Visit HTX website"
+                  >
+                    <img
+                      src={HTXlogo}
+                      alt="HTX logo"
+                      style={{ width: '100px', height: '100px', objectFit: 'contain' }}
+                    />
+                  </a>
                 </div>
 
                 {/* B: Skills */}
