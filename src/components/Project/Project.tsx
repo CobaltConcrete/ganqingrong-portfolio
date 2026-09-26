@@ -1,7 +1,5 @@
 import { useEffect, useRef } from 'react';
 import ImageCarousel from '../ImageCarousel/ImageCarousel.tsx';
-import Eatsee0 from '../../assets/Projects/Eatsee0.png'
-import Eatsee1 from '../../assets/Projects/Eatsee1.png'
 import Pantheon0 from '../../assets/Projects/Pantheon0.png';
 import Pantheon1 from '../../assets/Projects/Pantheon1.png';
 import Pantheon2 from '../../assets/Projects/Pantheon2.png';
@@ -28,11 +26,8 @@ import eCycle1 from '../../assets/Projects/eCycle1.png';
 import eCycle2 from '../../assets/Projects/eCycle2.png';
 import eCycle3 from '../../assets/Projects/eCycle3.png';
 import eCycle4 from '../../assets/Projects/eCycle4.png';
-import RealAnot0 from '../../assets/Projects/RealAnot0.png';
-import RealAnot1 from '../../assets/Projects/RealAnot1.png';
-import OSPS0 from '../../assets/Projects/OSPS0.png';
-import OSPS1 from '../../assets/Projects/OSPS1.png';
-import OSPS2 from '../../assets/Projects/OSPS2.png';
+import NebulaX0 from '../../assets/Projects/NebulaX0.jpg';
+import NebulaX1 from '../../assets/Projects/NebulaX1.png';
 
 import styles from './Project.module.css';
 
@@ -40,11 +35,11 @@ const Project = () => {
   const BerthingBridgeVideo = "https://www.youtube.com/embed/S7lvtBrAsu4?autoplay=1&mute=1&loop=1&playlist=S7lvtBrAsu4&controls=1&modestbranding=1";
   const eCycleVideo = "https://www.youtube.com/embed/ZFQg8qSyFPw?autoplay=1&mute=1&loop=1&playlist=ZFQg8qSyFPw&controls=1&modestbranding=1";
   const eCycleWebsite = "https://ecycle-1.onrender.com/";
+  const NebulaXWebsite = "https://nebulax-ouyu.onrender.com/";
   const NightingAIeVideo = "https://www.youtube.com/embed/lXCTaN2MdRk?autoplay=1&mute=1&loop=1&playlist=lXCTaN2MdRk&controls=1&modestbranding=1";
   const PantheonGame = "https://thortol.itch.io/pantheon";
   const PantheonVideo = "https://www.youtube.com/embed/5Q-6Qt7IhZQ?autoplay=1&mute=1&loop=1&playlist=5Q-6Qt7IhZQ&controls=1&modestbranding=1";
   const TOSSVideo = "https://www.youtube.com/embed/nAbwYBqBZuU?autoplay=1&mute=1&loop=1&playlist=nAbwYBqBZuU&controls=1&modestbranding=1";
-  const OSPSTelebot = "https://t.me/OweSPayS_bot"
 
   const projectItemVideoRef = useRef<HTMLVideoElement>(null);
 
@@ -84,6 +79,17 @@ const Project = () => {
   };
 
   const projects: Project[] = [
+    {
+      name: "NebulaX",
+      subtitle: "Railway Predictive Maintenance Platform",
+      description:
+        "An offline-capable condition-monitoring platform for four railway subsystems: door fault segmentation, air-conditioning leak ranking, rail corrugation classification, and structural health fatigue-damage prediction. It brings the workflows together in a web app for uploading data, reviewing predictions, and downloading results, with an interactive fleet twin for exploring equipment health and alerts.",
+      images: [
+        { src: NebulaX0, href: NebulaXWebsite },
+        { src: NebulaX1, href: NebulaXWebsite },
+      ],
+      links: [{ label: "Live app", href: NebulaXWebsite }],
+    },
     {
       name: "eCycle",
       subtitle: "E-Waste Disposal & Community Platform",
@@ -184,38 +190,6 @@ const Project = () => {
       links: [
         { label: "Play", href: PantheonGame },
         { label: "Demo", href: PantheonVideo },
-      ],
-    },
-    {
-      name: "O$P$",
-      subtitle: "Social Debt Tracker",
-      description:
-        "Telegram bot designed to simplify shared expenses and debt reminders among friends. Handles expense logging, balance reconciliation, and automated settlement nudges with smart notifications. Built using Supabase for persistent data storage, Python, and Telegram Bot API. Deployed on Heroku with lightweight serverless logic for reliability and low cost.",
-      images: [
-        { src: OSPS0, href: OSPSTelebot },
-        { src: OSPS1, href: OSPSTelebot },
-        { src: OSPS2, href: OSPSTelebot },
-      ],
-      links: [{ label: "Try it!", href: "https://t.me/OweSPayS_bot" }],
-    },
-    {
-      name: "EatSee",
-      subtitle: "Food & Social Matching Platform",
-      description:
-        "Telegram bot that matches users with compatible food buddies based on shared cuisine preferences and social compatibility, including age and gender preferences. Built with Flask, FastAPI, and PostgreSQL.",
-      images: [
-        { src: Eatsee0 },
-        { src: Eatsee1 },
-      ],
-    },
-    {
-      name: "RealAnot",
-      subtitle: "AI-Powered Social Media Analyzer Bot",
-      description:
-        "Telegram bot that analyzes photos, text, and links from platforms like YouTube, Instagram, and news sites. Integrates web scraping, search, and AI vision/audio models to deliver rich content insights. Built with Python, Telegram Bot API, EnsembleData, ExaAI, Groq, llama-3.2, and Whisper.",
-      images: [
-        { src: RealAnot0 },
-        { src: RealAnot1 },
       ],
     },
     // Add Projects here
